@@ -1,0 +1,42 @@
+{
+  "name": "initialStart",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "key-mirror": "^1.0.1",
+    "native-base": "^2.8.1",
+    "react": "16.6.0-alpha.8af6728",
+    "react-native": "0.57.3",
+    "react-native-actionsheet": "^2.4.2",
+    "react-native-datepicker": "^1.7.2",
+    "react-native-event-listeners": "^1.0.3",
+    "react-native-fast-image": "^5.0.11",
+    "react-native-form-builder": "^1.0.15",
+    "react-native-form-generator": "^0.9.9",
+    "react-native-image-crop-picker": "^0.21.3",
+    "react-native-image-picker": "^0.27.1",
+    "react-native-modal-picker": "^0.0.16",
+    "react-native-picker": "^4.3.7",
+    "react-native-popup-dialog": "^0.16.1",
+    "react-native-responsive-screen": "^1.2.0",
+    "react-native-router-flux": "^4.0.5",
+    "react-native-search-filter": "^0.1.4",
+    "react-native-vector-icons": "^6.0.2",
+    "react-redux": "^5.1.1",
+    "redux": "^4.0.1",
+    "tcomb-form-native": "^0.6.20"
+  },
+  "devDependencies": {
+    "babel-jest": "23.6.0",
+    "jest": "23.6.0",
+    "metro-react-native-babel-preset": "0.48.1",
+    "react-test-renderer": "16.6.0-alpha.8af6728"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

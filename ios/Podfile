@@ -1,0 +1,49 @@
+def shared_pods
+
+	pod 'React', :path => '../node_modules/react-native/React', :subspecs => [
+    		'Core',
+    		'CxxBridge',
+    		'DevSupport', 
+    		'RCTText',
+    		'RCTNetwork',
+    		'RCTWebSocket', 
+    		'RCTAnimation', 
+  	]
+ 
+	pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
+
+	# pod 'CodePush', :path => '../node_modules/react-native-code-push'
+	
+  	# pod 'Firebase/Core'
+  	# pod 'Firebase/Messaging'
+  
+	# pod 'Fabric'
+  # 	pod 'Crashlytics'
+
+	# pod 'GooglePlaces'
+  # 	pod 'GoogleMaps'
+  # 	pod 'GooglePlacePicker'
+  
+  	#pod 'Firebase/Auth'
+	#pod 'Firebase/Crash'
+  	#pod 'Firebase/DynamicLinks'
+ 
+end
+
+target 'initialStart' do
+    shared_pods
+  pod 'ReactNativeSearchBar', :path => '../node_modules/react-native-search-bar'
+
+  pod 'Picker', :path => '../node_modules/react-native-picker'
+
+  pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
+
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+
+end
+
+
+
+
+
+
