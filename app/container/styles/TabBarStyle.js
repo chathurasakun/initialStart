@@ -16,8 +16,8 @@ const HeaderBarStyle = {
     },
     tabBarUnderline: {
         borderBottomWidth: 0,
-        backgroundColor: '#E0E0E0',
-        height: 2
+        backgroundColor: 'white',
+        height: 1
     },
     tabBarCustomButton: {
         marginLeft: Platform.OS === "ios" ? -7 : -8, height: 30,
@@ -37,15 +37,15 @@ const HeaderBarStyle = {
         backgroundColor: 'white'
     },
     activeTabStyle: {
-        backgroundColor: '#021aee'
+        backgroundColor: 'white'
     },
     tabHeadingText: {
-        fontSize: hp('2.5%'),
-        color: 'rgba(0,0,0,0.38)',
+        fontSize: hp('1.8%'),
+        color: '#9B9B9B',
     },
     activeTabHeadingText: {
-        fontSize: hp('2.5%'),
-        color: 'white',
+        fontSize: hp('1.8%'),
+        color: '#007CC4',
     }
 }
 

@@ -37,7 +37,7 @@ class TabBar extends Component {
     render = () => {
         return (
             <Container>
-                <Header style={{ backgroundColor: '#021aee', height: hp('7.5%') }}>
+                <Header style={{ backgroundColor: '#007CC4', height: hp('7.5%') }}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <Left>
                             <Button
@@ -64,9 +64,9 @@ class TabBar extends Component {
                             <Text style={{ color: '#FFFFFF', fontSize: hp('2.5%'), fontWeight: 'bold' }}>Create new Timesheet</Text>
                         </View>
                         <Right>
-                            <Button transparent onPress={() => EventRegister.emit('myCustomEvent4')}>
+                            {/* <Button transparent onPress={() => EventRegister.emit('myCustomEvent4')}>
                                 <Text style={{ color: '#FFFFFF', fontSize: hp('2%') }}>Submit</Text>
-                            </Button>
+                            </Button> */}
                         </Right>
                     </View>
                 </Header>
@@ -128,6 +128,19 @@ class TabBar extends Component {
                         <Expenses />
                     </Tab>
                 </Tabs>
+
+                <View style={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#ededed',
+                    marginTop: hp('92.5%'),
+                    height: 2
+                }}/>
 
                 {(this.state.isSavingData) ?
                     <ActivityIndicator

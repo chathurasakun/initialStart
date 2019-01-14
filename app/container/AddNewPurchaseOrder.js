@@ -181,7 +181,7 @@ class AddNewPurchaseOrder extends Component {
             if (value.workOrder !== null) {
                 const newPurchaseOrderObj = {
                     agreementDTO: {
-                        id: value.agreement
+                        id: value.selectAnAgreement
                     },
                     poNumber: value.purchaseOrderNumber,
                     description: value.description,
@@ -193,7 +193,7 @@ class AddNewPurchaseOrder extends Component {
             else {
                 const newPurchaseOrderObj = {
                     agreementDTO: {
-                        id: value.agreement
+                        id: value.selectAnAgreement
                     },
                     poNumber: value.purchaseOrderNumber,
                     description: value.description,
@@ -207,7 +207,7 @@ class AddNewPurchaseOrder extends Component {
 
     getForm = () => {
         return (t.struct({
-            agreement: this.state.pickerOptions,
+            selectAnAgreement: this.state.pickerOptions,
             purchaseOrderNumber: t.String,
             description: t.String,
             workOrder: t.maybe(t.String),
@@ -217,21 +217,22 @@ class AddNewPurchaseOrder extends Component {
     getFormOptions = () => {
         return ({
             fields: {
-                agreement: {
-                    auto: 'labels',
-                    error: 'Select an Agreement'
+                selectAnAgreement: {
+                    auto: 'labels'
+                    //error: 'Select an Agreement'
                 },
                 purchaseOrderNumber: {
-                    auto: 'labels',
-                    error: 'Enter valid Purchase Order'
+                    //auto: 'labels',
+                    //placeholders: 'Purchase order number',
+                    //error: 'Enter valid Purchase Order'
                 },
                 description: {
-                    auto: 'labels',
+                    //auto: 'labels',
                     multiline: true,
-                    error: 'Description is required'
+                    //error: 'Description is required'
                 },
                 workOrder: {
-                    auto: 'labels'
+                    //auto: 'labels'
                 }
             },
             auto: 'placeholders'
@@ -241,7 +242,7 @@ class AddNewPurchaseOrder extends Component {
     render = () => {
         return (
             <Container>
-                <Header style={{ backgroundColor: '#021aee', height: hp('7.5%') }}>
+                <Header style={{ backgroundColor: '#007CC4', height: hp('7.5%') }}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <Left>
                             <Button transparent onPress={() => { Actions.pop() }}>
@@ -252,9 +253,9 @@ class AddNewPurchaseOrder extends Component {
                             <Text style={{ color: '#FFFFFF', fontSize: hp('2.5%'), fontWeight: 'bold' }}>New Purchase Order</Text>
                         </View>
                         <Right >
-                            <Button transparent onPress={() => this.handleSubmit()}>
+                            {/* <Button transparent onPress={() => this.handleSubmit()}>
                                 <Text style={{ color: '#FFFFFF', fontSize: hp('2%') }}>Add</Text>
-                            </Button>
+                            </Button> */}
                         </Right>
                     </View>
                 </Header>
@@ -272,6 +273,42 @@ class AddNewPurchaseOrder extends Component {
                             type={this.getForm()}
                             options={this.getFormOptions()}
                         />
+                    </View>
+
+                    <View style={{ alignItems: 'flex-end', flexDirection: 'row', marginTop: hp('2%') }}>
+                        <Left>
+                            <Button
+                                style={{
+                                    backgroundColor: '#007CC5',
+                                    width: wp('40%'),
+                                    height: hp('6%'),
+                                    borderRadius: wp('2%'),
+                                    marginLeft: wp('3%'),
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}
+                                onPress={() => this.handleSubmit()}
+                            >
+                                <Text style={{ color: '#FFFFFF', fontSize: hp('2%'), fontWeight: 'bold' }}>Add</Text>
+                            </Button>
+                        </Left>
+                        <Right>
+                            <Button
+                                bordered
+                                style={{
+                                    backgroundColor: '#FFFFFF',
+                                    width: wp('40%'),
+                                    height: hp('6%'),
+                                    borderRadius: wp('2%'),
+                                    marginRight: wp('3%'),
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}
+                                onPress={() => Actions.pop()}
+                            >
+                                <Text style={{ color: '#007CC4', fontSize: hp('2%'), fontWeight: 'bold' }}>Cancel</Text>
+                            </Button>
+                        </Right>
                     </View>
                 </ScrollView>
 

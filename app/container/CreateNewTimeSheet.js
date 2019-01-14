@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, AsyncStorage, Text, View, ActionSheetIOS } from 'react-native';
-import { Container, Card, CardItem, Right, Left, List, ListItem, Item, Input } from 'native-base';
+import { Alert, AsyncStorage, Text, View, ActionSheetIOS, TouchableOpacity } from 'react-native';
+import { Container, Card, CardItem, Right, Left, List, ListItem, Item, Input, Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import baseUrl from '../config/baseUrl';
 import Icons from 'react-native-vector-icons/AntDesign';
@@ -248,12 +248,13 @@ class CreateNewTimeSheet extends Component {
                                         style={{
                                             fontWeight: 'bold',
                                             fontSize: hp('2%'),
-                                            textAlign: 'left'
+                                            textAlign: 'left',
+                                            color: '#484848'
                                         }}
                                     >
                                         {this.props.value.description}
                                     </Text>
-                                    <Text style={{ color: '#9B9B9B', fontSize: hp('2%') }}>{this.props.value.poNumber}</Text>
+                                    <Text style={{ color: '#9B9B9B', fontSize: hp('2%'), fontWeight: 'bold' }}>{this.props.value.poNumber}</Text>
                                 </View>
                             </View>
                         </CardItem>
@@ -263,12 +264,13 @@ class CreateNewTimeSheet extends Component {
                                     style={{
                                         fontWeight: 'bold',
                                         fontSize: hp('2%'),
-                                        textAlign: 'left'
+                                        textAlign: 'left',
+                                        color: '#484848'
                                     }}
                                 >
                                     Agreement
                             </Text>
-                                <Text style={{ color: '#9B9B9B', textAlign: 'left', fontSize: hp('2%') }}>{this.props.value.agreementDTO.agreementNumber}</Text>
+                                <Text style={{ color: '#9B9B9B', textAlign: 'left', fontSize: hp('2%'), fontWeight: 'bold' }}>{this.props.value.agreementDTO.agreementNumber}</Text>
                             </View>
                         </CardItem>
                         <CardItem footer>
@@ -279,13 +281,14 @@ class CreateNewTimeSheet extends Component {
                                             style={{
                                                 fontWeight: 'bold',
                                                 fontSize: hp('2%'),
-                                                textAlign: 'left'
+                                                textAlign: 'left',
+                                                color: '#484848'
                                             }}
                                         >
                                             Work Order
                                     </Text>
                                         {(this.props.value.costObjectType === 'XOM') ?
-                                            <Text style={{ color: '#9B9B9B', textAlign: 'left', fontSize: hp('2%') }}>{this.props.value.costObjectNumber}</Text>
+                                            <Text style={{ color: '#9B9B9B', textAlign: 'left', fontSize: hp('2%'), fontWeight: 'bold' }}>{this.props.value.costObjectNumber}</Text>
                                             :
                                             <Item regular style={{ width: wp('22%'), height: hp('4%') }}>
                                                 <Input
@@ -293,7 +296,7 @@ class CreateNewTimeSheet extends Component {
                                                         workOrderNo: workOrderNo
                                                     })}
                                                     maxLength={8}
-                                                    style={{ fontSize: hp('2%'), color: '#9B9B9B' }}
+                                                    style={{ fontSize: hp('2%'), color: '#9B9B9B', fontWeight: 'bold' }}
                                                 />
                                             </Item>
                                         }
@@ -303,6 +306,7 @@ class CreateNewTimeSheet extends Component {
                                     <Text style={{ color: '#7ED321', fontSize: hp('1.5%') }}>{this.props.value.costObjectType}</Text>
                                 </Right>
                             </View>
+                            <View style={{ height: hp('10%') }} />
                         </CardItem>
                     </Card>
                     :
@@ -314,12 +318,13 @@ class CreateNewTimeSheet extends Component {
                                         style={{
                                             fontWeight: 'bold',
                                             fontSize: hp('2%'),
-                                            textAlign: 'left'
+                                            textAlign: 'left',
+                                            color: '#484848'
                                         }}
                                     >
                                         {this.props.value.description}
                                     </Text>
-                                    <Text style={{ color: '#9B9B9B', fontSize: hp('2%') }}>{this.props.value.poNumber}</Text>
+                                    <Text style={{ color: '#9B9B9B', fontSize: hp('2%'), fontWeight: 'bold' }}>{this.props.value.poNumber}</Text>
                                 </View>
                             </View>
                         </CardItem>
@@ -329,12 +334,13 @@ class CreateNewTimeSheet extends Component {
                                     style={{
                                         fontWeight: 'bold',
                                         fontSize: hp('2%'),
-                                        textAlign: 'left'
+                                        textAlign: 'left',
+                                        color: '#484848'
                                     }}
                                 >
                                     Agreement
-                            </Text>
-                                <Text style={{ color: '#9B9B9B', textAlign: 'left', fontSize: hp('2%') }}>{this.props.value.agreementDTO.agreementNumber}</Text>
+                                </Text>
+                                <Text style={{ color: '#9B9B9B', textAlign: 'left', fontSize: hp('2%'), fontWeight: 'bold' }}>{this.props.value.agreementDTO.agreementNumber}</Text>
                             </View>
                         </CardItem>
                         <CardItem footer>
@@ -345,13 +351,14 @@ class CreateNewTimeSheet extends Component {
                                             style={{
                                                 fontWeight: 'bold',
                                                 fontSize: hp('2%'),
-                                                textAlign: 'left'
+                                                textAlign: 'left',
+                                                color: '#484848'
                                             }}
                                         >
                                             Work Order
-                                    </Text>
+                                        </Text>
                                         {(this.props.value.costObjectType === 'XOM') ?
-                                            <Text style={{ color: '#9B9B9B', textAlign: 'left', fontSize: hp('2%') }}>{this.props.value.costObjectNumber}</Text>
+                                            <Text style={{ color: '#9B9B9B', textAlign: 'left', fontSize: hp('2%'), fontWeight: 'bold' }}>{this.props.value.costObjectNumber}</Text>
                                             :
                                             <Item regular style={{ width: wp('22%'), height: hp('4%') }}>
                                                 <Input
@@ -359,7 +366,7 @@ class CreateNewTimeSheet extends Component {
                                                         workOrderNo: workOrderNo
                                                     })}
                                                     maxLength={8}
-                                                    style={{ fontSize: hp('2%'), color: '#9B9B9B' }}
+                                                    style={{ fontSize: hp('2%'), color: '#9B9B9B', fontWeight: 'bold' }}
                                                 />
                                             </Item>
                                         }
@@ -369,11 +376,10 @@ class CreateNewTimeSheet extends Component {
                                     <Text style={{ color: '#7ED321', fontSize: hp('1.5%') }}>{this.props.value.costObjectType}</Text>
                                 </Right>
                             </View>
+                            <View style={{ height: hp('10%') }} />
                         </CardItem>
                     </Card>
                 }
-
-                <View style={{ backgroundColor: '#ededed', height: hp('1%') }} />
 
                 <List>
                     <ListItem>
@@ -381,7 +387,8 @@ class CreateNewTimeSheet extends Component {
                             <Text
                                 style={{
                                     fontWeight: 'bold',
-                                    fontSize: hp('2%')
+                                    fontSize: hp('2%'),
+                                    color: '#484848'
                                 }}
                             >
                                 Timesheet Date
@@ -413,8 +420,6 @@ class CreateNewTimeSheet extends Component {
                         </Right>
                     </ListItem>
 
-                    <View style={{ backgroundColor: '#ededed', height: hp('1%') }} />
-
                     <ListItem
                         onPress={() => ActionSheetIOS.showActionSheetWithOptions(
                             {
@@ -441,7 +446,8 @@ class CreateNewTimeSheet extends Component {
                             <Text
                                 style={{
                                     fontWeight: 'bold',
-                                    fontSize: hp('2%')
+                                    fontSize: hp('2%'),
+                                    color: '#484848'
                                 }}
                             >
                                 Shift
@@ -451,50 +457,67 @@ class CreateNewTimeSheet extends Component {
                             {this.state.timesheetShift}
                         </Text>
                         <Right>
-                            <Icons name='right' style={{ color: '#9B9B9B', fontSize: hp('2%') }} />
+                            <Icons name='right' style={{ color: '#484848', fontSize: hp('3%') }} />
                         </Right>
                     </ListItem>
-
-                    <View style={{ backgroundColor: '#ededed', height: hp('1%') }} />
 
                     <ListItem onPress={() => Actions.push('approveList', { parentComponent: this, poObj: this.props.value })}>
                         <Left>
                             <Text
                                 style={{
                                     fontWeight: 'bold',
-                                    fontSize: hp('2%')
+                                    fontSize: hp('2%'),
+                                    color: '#484848'
                                 }}
                             >
-                                Approver
+                                Selecting Approver
                             </Text>
                         </Left>
                         <Text style={{ fontSize: hp('2%') }}>
                             {this.state.approver.firstName} {this.state.approver.lastName}
                         </Text>
                         <Right>
-                            <Icons name='right' style={{ color: '#9B9B9B', fontSize: hp('2%') }} />
+                            <Icons name='right' style={{ color: '#484848', fontSize: hp('3%') }} />
                         </Right>
                     </ListItem>
-
-                    <View style={{ backgroundColor: '#ededed', height: hp('1%') }} />
 
                     <ListItem onPress={() => null}>
                         <Left>
                             <Text
                                 style={{
                                     fontWeight: 'bold',
-                                    fontSize: hp('2%')
+                                    fontSize: hp('2%'),
+                                    color: '#484848'
                                 }}
                             >
                                 Import from previous Timesheet
                             </Text>
                         </Left>
                         <Right>
-                            <Icons1 name='import' style={{ color: '#9B9B9B', fontSize: hp('4%') }} />
+                            <Icons name='right' style={{ color: '#484848', fontSize: hp('3%') }} />
                         </Right>
                     </ListItem>
                 </List>
-                <View style={{ backgroundColor: '#ededed', height: hp('40%') }} />
+                {/* <View style={{ backgroundColor: '#ededed', height: hp('40%') }} > */}
+                <View style={{
+                    marginTop: hp('4%'),
+                    marginLeft: wp('30%'),
+                    marginRight: wp('30%')
+                }}
+                >
+                    <Button
+                        style={{
+                            backgroundColor: '#007CC5',
+                            width: wp('40%'),
+                            height: hp('6%'),
+                            borderRadius: wp('2%'),
+                            justifyContent: 'center'
+                        }}
+                        onPress={() => EventRegister.emit('myCustomEvent4')}
+                    >
+                        <Text style={{ color: '#FFFFFF', fontSize: hp('2.5%'), fontWeight: 'bold' }}>Submit</Text>
+                    </Button>
+                </View>
             </Container>
         );
     }

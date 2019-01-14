@@ -417,7 +417,7 @@ class MaterialList extends Component {
 
         return (
             <Container>
-                <Header style={{ backgroundColor: '#021aee', height: hp('7.5%') }}>
+                <Header style={{ backgroundColor: '#007CC4', height: hp('7.5%') }}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <Left>
                             <Button transparent onPress={() => { Actions.pop() }}>
