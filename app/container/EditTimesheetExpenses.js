@@ -141,16 +141,20 @@ class EditTimesheetExpenses extends Component {
                     </View>
                 </Header>
 
-                <View style={{ flexDirection: 'row' }}>
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                >
                     <Button
                         style={{
-                            alignSelf: 'flex-end',
-                            width: wp('99%'),
+                            width: wp('95%'),
                             height: hp('7%'),
-                            backgroundColor: '#008b00',
+                            backgroundColor: '#00a65a',
                             justifyContent: 'center',
                             borderRadius: wp('4%'),
-                            marginHorizontal: 4,
                             marginTop: hp('0.5%')
                         }}
                         onPress={() => Actions.push('editTimesheetExpenses_2', { parentComponent6: this, addNew: true, expenseItem: { description: '', amount: '', expensesImageDTOs: [], id: '' } })}
