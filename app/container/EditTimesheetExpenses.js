@@ -4,7 +4,6 @@ import { Button, Container, SwipeRow, Icon, CardItem, Header, Left, Right } from
 import { Actions } from 'react-native-router-flux';
 import Icons from 'react-native-vector-icons/AntDesign';
 import Icons2 from 'react-native-vector-icons/FontAwesome';
-import Metrics from '../utils/matrics';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 class EditTimesheetExpenses extends Component {
@@ -128,17 +127,17 @@ class EditTimesheetExpenses extends Component {
     render = () => {
         return (
             <Container>
-                <Header style={{ backgroundColor: '#007CC4', height: hp('7.5%') }}>
+                <Header style={{ backgroundColor: '#007CC4', height: hp('10%') }}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <Left>
                             <Button transparent onPress={() => { Actions.pop() }}>
                                 <Icons name='left' style={{ color: '#FFFFFF', fontSize: hp('2%') }} />
                             </Button>
                         </Left>
-                        <View style={{ width: (Metrics.screenWidth / 4) * 2, alignItems: 'center' }}>
+                        <View style={{ alignItems: 'center' }}>
                             <Text style={{ color: '#FFFFFF', fontSize: hp('2.5%') }}>Expenses</Text>
                         </View>
-                        <Right></Right>
+                        <Right />
                     </View>
                 </Header>
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { AsyncStorage, Text, TouchableOpacity, View, FlatList, ActivityIndicator } from 'react-native';
 import { Header, Button, Container, List, ListItem, Left, Right, Card, CardItem } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-import Metrics from '../utils/matrics';
 import baseUrl from '../config/baseUrl';
 import Icons from 'react-native-vector-icons/AntDesign';
 import { removeUser } from '../redux/actions/operations';
@@ -147,17 +146,17 @@ class PurchaseOrder2 extends Component {
     render = () => {
         return (
             <Container>
-                <Header style={{ backgroundColor: '#007CC4', height: hp('7.5%') }}>
+                <Header style={{ backgroundColor: '#007CC4', height: hp('10%') }}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <Left>
                             <Button transparent onPress={() => { Actions.purchaseOrder() }} >
                                 <Icons name='left' style={{ color: '#FFFFFF', fontSize: hp('2%') }} />
                             </Button>
                         </Left>
-                        <View style={{ width: (Metrics.screenWidth / 4) * 2, alignItems: 'center' }}>
+                        <View style={{ alignItems: 'center' }}>
                             <Text style={{ color: '#FFFFFF', fontSize: hp('2.5%'), fontWeight: 'bold' }}>Purchase Orders</Text>
                         </View>
-                        <Right ></Right>
+                        <Right />
                     </View>
                 </Header>
 

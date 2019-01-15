@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, TouchableHighlight, View, FlatList, AsyncStorage, Alert, ActivityIndicator, TouchableOpacity } from 'react-native';
-import { Container, Right, Left, Tabs, Tab, Button } from 'native-base';
+import { Text, View, FlatList, AsyncStorage, Alert, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { Container, Tabs, Tab, Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import styles from './styles/DashboardStyle';
 import baseUrl from '../config/baseUrl';
@@ -302,9 +302,19 @@ class Dashboard extends Component {
                                 </Tabs>
                             </View>
                         :
-                        <View style={{ marginTop: hp('50%') }}>
-                            <ActivityIndicator animating size='large' color='#00ff00' />
-                        </View>
+                        <ActivityIndicator
+                            style={{
+                                position: 'absolute',
+                                left: 0,
+                                right: 0,
+                                top: 0,
+                                bottom: 0,
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}
+                            animating size='large'
+                            color='#00ff00'
+                        />
                     }
                 </View>
             </Container>

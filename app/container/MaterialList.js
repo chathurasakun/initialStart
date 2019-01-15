@@ -5,7 +5,6 @@ import { EventRegister } from 'react-native-event-listeners';
 import Picker from 'react-native-picker';
 import Icons from 'react-native-vector-icons/AntDesign';
 import { Actions } from 'react-native-router-flux';
-import Metrics from '../utils/matrics';
 import baseUrl from '../config/baseUrl';
 import { removeUser } from '../redux/actions/operations';
 import { connect } from 'react-redux';
@@ -417,17 +416,17 @@ class MaterialList extends Component {
 
         return (
             <Container>
-                <Header style={{ backgroundColor: '#007CC4', height: hp('7.5%') }}>
+                <Header style={{ backgroundColor: '#007CC4', height: hp('10%') }}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                        <Left>
+                        <View style={{ flex: 0.1 }}>
                             <Button transparent onPress={() => { Actions.pop() }}>
                                 <Icons name='left' style={{ fontSize: hp('2%'), color: '#FFFFFF' }} />
                             </Button>
-                        </Left>
-                        <View style={{ width: (Metrics.screenWidth / 4) * 2, alignItems: 'center' }}>
+                        </View>
+                        <View style={{ flex: 0.8, alignItems: 'center' }}>
                             <Text style={{ color: '#FFFFFF', fontSize: hp('2.5%') }}>Add Material</Text>
                         </View>
-                        <Right></Right>
+                        <View style={{ flex: 0.1 }} />
                     </View>
                 </Header>
 

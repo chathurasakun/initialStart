@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, Alert, AsyncStorage, ActivityIndicator } from 'react-native';
 import { Header, Button, Container, Left, Right } from 'native-base';
 import Icons from 'react-native-vector-icons/AntDesign';
-import Metrics from '../utils/matrics';
 import baseUrl from '../config/baseUrl';
 import { Actions } from 'react-native-router-flux';
 import { removeUser } from '../redux/actions/operations';
@@ -242,21 +241,17 @@ class AddNewPurchaseOrder extends Component {
     render = () => {
         return (
             <Container>
-                <Header style={{ backgroundColor: '#007CC4', height: hp('7.5%') }}>
-                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <Header style={{ backgroundColor: '#007CC4', height: hp('10%') }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
                         <Left>
                             <Button transparent onPress={() => { Actions.pop() }}>
                                 <Icons name='left' style={{ color: '#FFFFFF', fontSize: hp('2%') }} />
                             </Button>
                         </Left>
-                        <View style={{ width: (Metrics.screenWidth / 4) * 2, alignItems: 'center' }}>
+                        <View style={{ alignItems: 'center' }}>
                             <Text style={{ color: '#FFFFFF', fontSize: hp('2.5%'), fontWeight: 'bold' }}>New Purchase Order</Text>
                         </View>
-                        <Right >
-                            {/* <Button transparent onPress={() => this.handleSubmit()}>
-                                <Text style={{ color: '#FFFFFF', fontSize: hp('2%') }}>Add</Text>
-                            </Button> */}
-                        </Right>
+                        <Right />
                     </View>
                 </Header>
 

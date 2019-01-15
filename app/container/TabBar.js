@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Alert, Text, View, ActivityIndicator } from 'react-native';
-import { Header, Button, Container, Right, Left, Tabs, Tab } from 'native-base';
+import { Header, Button, Container, Tabs, Tab } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-import Metrics from '../utils/matrics';
 import Icons from 'react-native-vector-icons/AntDesign';
 import HeaderBarStyle from './styles/TabBarStyle';
 import CreateNewTimeSheet from './CreateNewTimeSheet';
@@ -37,9 +36,9 @@ class TabBar extends Component {
     render = () => {
         return (
             <Container>
-                <Header style={{ backgroundColor: '#007CC4', height: hp('7.5%') }}>
+                <Header style={{ backgroundColor: '#007CC4', height: hp('10%') }}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                        <Left>
+                        <View style={{ flex: 0.1 }}>
                             <Button
                                 transparent
                                 onPress={() => {
@@ -59,15 +58,11 @@ class TabBar extends Component {
                             >
                                 <Icons name='left' style={{ fontSize: hp('2%'), color: '#FFFFFF' }} />
                             </Button>
-                        </Left>
-                        <View style={{ width: (Metrics.screenWidth / 4) * 2, alignItems: 'center' }}>
+                        </View>
+                        <View style={{ alignItems: 'center', flex: 0.8 }}>
                             <Text style={{ color: '#FFFFFF', fontSize: hp('2.5%'), fontWeight: 'bold' }}>Create new Timesheet</Text>
                         </View>
-                        <Right>
-                            {/* <Button transparent onPress={() => EventRegister.emit('myCustomEvent4')}>
-                                <Text style={{ color: '#FFFFFF', fontSize: hp('2%') }}>Submit</Text>
-                            </Button> */}
-                        </Right>
+                        <View style={{ flex: 0.1 }} />
                     </View>
                 </Header>
 
@@ -140,7 +135,7 @@ class TabBar extends Component {
                     backgroundColor: '#ededed',
                     marginTop: hp('92.5%'),
                     height: 2
-                }}/>
+                }} />
 
                 {(this.state.isSavingData) ?
                     <ActivityIndicator

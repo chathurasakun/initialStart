@@ -92,14 +92,14 @@ class Expenses_2 extends Component {
     render = () => {
         return (
             <Container>
-                <Header style={{ backgroundColor: '#007CC4', height: hp('7.5%') }}>
+                <Header style={{ backgroundColor: '#007CC4', height: hp('10%') }}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <Left>
                             <Button transparent onPress={() => { Actions.pop() }}>
                                 <Icons name='left' style={{ fontSize: hp('2%'), color: '#FFFFFF' }} />
                             </Button>
                         </Left>
-                        <View style={{ width: (Metrics.screenWidth / 4) * 2, alignItems: 'center' }}>
+                        <View style={{ alignItems: 'center' }}>
                             <Text style={{ color: '#FFFFFF', fontSize: hp('2.5%') }}>Add Expense</Text>
                         </View>
                         <Right>
