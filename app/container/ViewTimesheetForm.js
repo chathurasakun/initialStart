@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, ActivityIndicator, View, ScrollView, FlatList, AsyncStorage, Alert } from 'react-native';
+import { Text, ActivityIndicator, View, ScrollView, FlatList, AsyncStorage, Alert, Dimensions } from 'react-native';
 import { Header, Button, Container, Card, CardItem, Right, Left, Body } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Icons from 'react-native-vector-icons/AntDesign';
@@ -736,7 +736,7 @@ class ViewTimesheetForm extends Component {
                     visible={this.state.visible}
                     dialogStyle={{
                         width: wp('80%'),
-                        height: hp('22%')
+                        height: (Dimensions.get('window').height === 568) ? hp('24%') : (Dimensions.get('window').height === 1366) ? hp('20%') : (Dimensions.get('window').height === 1194) ? hp('20%') : (Dimensions.get('window').height === 1112) ? hp('20%') : (Dimensions.get('window').height === 1024) ? hp('20%') : hp('22%')
                     }}
                     dialogAnimation={new SlideAnimation({
                         slideFrom: 'bottom',
