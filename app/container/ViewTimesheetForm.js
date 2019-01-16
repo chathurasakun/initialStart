@@ -441,7 +441,7 @@ class ViewTimesheetForm extends Component {
     render = () => {
         return (
             <Container>
-                <Header style={{ backgroundColor: '#007CC4', height: hp('10%') }}>
+                <Header style={{ backgroundColor: '#3a5997', height: hp('10%') }}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <Left>
                             <Button transparent onPress={() => { Actions.pop() }}>
@@ -634,7 +634,7 @@ class ViewTimesheetForm extends Component {
                                         scrollEnabled={false}
                                     />
                                     :
-                                    <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: wp('3%') }}>No Labors to display</Text>
+                                    <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: wp('3%') }}>Not added.</Text>
                                 }
                             </Card>
 
@@ -650,7 +650,7 @@ class ViewTimesheetForm extends Component {
                                         scrollEnabled={false}
                                     />
                                     :
-                                    <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: 25 }}>No Equipments to display</Text>
+                                    <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: 25 }}>Not added.</Text>
                                 }
                             </Card>
 
@@ -666,7 +666,7 @@ class ViewTimesheetForm extends Component {
                                         scrollEnabled={false}
                                     />
                                     :
-                                    <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: 25 }}>No Materials to display</Text>
+                                    <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: 25 }}>Not added.</Text>
                                 }
                             </Card>
 
@@ -682,7 +682,7 @@ class ViewTimesheetForm extends Component {
                                         scrollEnabled={false}
                                     />
                                     :
-                                    <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: 25 }}>No Expenses to display</Text>
+                                    <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: 25 }}>Not added.</Text>
                                 }
                             </Card>
                         </View>
@@ -692,7 +692,7 @@ class ViewTimesheetForm extends Component {
                         </View>
                     }
 
-                    {(this.state.userType !== 'SUPERVISOR' && this.state.isFetchingTimesheetDetails === false) ?
+                    {(this.state.userType !== 'SUPERVISOR' && this.state.isFetchingTimesheetDetails === false && this.props.status === 3) ?
                         <View style={{ alignItems: 'flex-end', flexDirection: 'row', marginTop: hp('2%') }}>
                             <Left>
                                 <Button

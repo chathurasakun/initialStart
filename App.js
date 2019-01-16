@@ -48,7 +48,7 @@ export class App extends Component {
   render = () => {
     return (
       <Provider store={store}>
-        <Router navigationBarStyle={{ backgroundColor: '#007CC4', height: hp('7.5%') }}>
+        <Router navigationBarStyle={{ backgroundColor: '#3a5997', height: hp('7.5%') }}>
           <Scene key='root' hideNavBar>
             <Scene key='init'
               component={Init}

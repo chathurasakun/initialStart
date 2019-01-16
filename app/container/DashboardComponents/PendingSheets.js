@@ -42,7 +42,7 @@ class PendingSheets extends Component {
         let getDay = getDate.getDate().toString();
 
         return (
-            <TouchableOpacity onPress={() => Actions.push('viewTimesheetForm', { timesheetId: item.id })}>
+            <TouchableOpacity onPress={() => Actions.push('viewTimesheetForm', { timesheetId: item.id, status: item.status })}>
                 <View
                     style={{
                         flexDirection: 'row',

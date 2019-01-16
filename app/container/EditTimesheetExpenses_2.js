@@ -114,7 +114,7 @@ class EditTimesheetExpenses_2 extends Component {
     render = () => {
         return (
             <Container>
-                <Header style={{ backgroundColor: '#007CC4', height: hp('10%') }}>
+                <Header style={{ backgroundColor: '#3a5997', height: hp('10%') }}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <Left>
                             <Button

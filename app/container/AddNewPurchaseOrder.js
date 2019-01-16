@@ -241,7 +241,7 @@ class AddNewPurchaseOrder extends Component {
     render = () => {
         return (
             <Container>
-                <Header style={{ backgroundColor: '#007CC4', height: hp('10%') }}>
+                <Header style={{ backgroundColor: '#3a5997', height: hp('10%') }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
                         <Left>
                             <Button transparent onPress={() => { Actions.pop() }}>

@@ -186,6 +186,15 @@ class EditTimesheet extends Component {
         });
     }
 
+    // convertToFormat = (time) => {
+    //     let getDate = new Date(time);
+    //     let getYear = getDate.getFullYear().toString();
+    //     let getMonth = getDate.getMonth().toString();
+    //     let getDay = getDate.getDate().toString();
+
+    //     return `${getYear}-${getMonth - 1}-${getDay}`;
+    // }
+
     updateTimesheet = () => {
         if (this.state.shiftCategory !== '' && this.state.approverArray.length !== 0 && this.state.laborArray.length > 0) {
             //console.log(this.state.fromServerMaterial);
@@ -543,7 +552,7 @@ class EditTimesheet extends Component {
 
         return (
             <Container>
-                <Header style={{ backgroundColor: '#007CC4', height: hp('10%') }}>
+                <Header style={{ backgroundColor: '#3a5997', height: hp('10%') }}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <Left>
                             <Button

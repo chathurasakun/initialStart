@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { Container, Right, Left } from 'native-base';
 import Icons from 'react-native-vector-icons/AntDesign';
+import { Actions } from 'react-native-router-flux';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 class ApprovedSheets extends Component {
@@ -41,7 +42,7 @@ class ApprovedSheets extends Component {
         let getDay = getDate.getDate().toString();
 
         return (
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => Actions.push('viewTimesheetForm', { timesheetId: item.id, status: item.status })}>
                 <View
                     style={{
                         flexDirection: 'row',

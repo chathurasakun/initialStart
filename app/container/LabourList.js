@@ -651,7 +651,7 @@ class LabourList extends Component {
 
         return (
             <Container>
-                <Header style={{ backgroundColor: '#007CC4', height: hp('10%') }}>
+                <Header style={{ backgroundColor: '#3a5997', height: hp('10%') }}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <View style={{ flex: 0.1 }}>
                             <Button transparent onPress={() => { Actions.pop() }}>
@@ -731,7 +731,7 @@ class LabourList extends Component {
                                                         (item.selected) ?
                                                             <View
                                                                 style={{
-                                                                    backgroundColor: 'rgba(0,0,0,0.8)',
+                                                                    backgroundColor: '#e1f3fd',
                                                                     alignItems: 'center',
                                                                     paddingLeft: 20,
                                                                     paddingRight: 20,
@@ -741,12 +741,12 @@ class LabourList extends Component {
                                                                 }}
                                                             >
                                                                 <Left style={{ flexDirection: 'row' }}>
-                                                                    <Icon name='checkbox' style={{ color: 'white', fontSize: hp('3.5%') }} />
+                                                                    {/* <Icon name='checkbox' style={{ color: 'white', fontSize: hp('3.5%') }} /> */}
                                                                     <View style={{ flexDirection: 'column', paddingLeft: 20 }}>
-                                                                        <Text style={{ color: 'white', fontSize: hp('2.5%') }}>
+                                                                        <Text style={{ color: 'black', fontSize: hp('2.5%') }}>
                                                                             {item.firstName} {item.lastName}
                                                                         </Text>
-                                                                        <Text style={{ color: 'white', fontSize: hp('2%') }}>
+                                                                        <Text style={{ color: '#bbbdc0', fontSize: hp('2%') }}>
                                                                             {item.skillDTO.skillName}
                                                                         </Text>
                                                                     </View>
@@ -754,20 +754,20 @@ class LabourList extends Component {
                                                                 <Right>
                                                                     {(item.hours > 1) ?
                                                                         (item.minutes > 0) ?
-                                                                            <Text style={{ color: 'white', textAlign: 'center', fontSize: hp('2%') }}>
+                                                                            <Text style={{ color: '#bbbdc0', textAlign: 'center', fontSize: hp('2%') }}>
                                                                                 {item.hours} hrs {item.minutes} min
                                                                             </Text>
                                                                             :
-                                                                            <Text style={{ color: 'white', textAlign: 'center', fontSize: hp('2%') }}>
+                                                                            <Text style={{ color: '#bbbdc0', textAlign: 'center', fontSize: hp('2%') }}>
                                                                                 {item.hours} hrs 0 min
                                                                             </Text>
                                                                         :
                                                                         (item.minutes > 0) ?
-                                                                            <Text style={{ color: 'white', textAlign: 'center', fontSize: hp('2%') }}>
+                                                                            <Text style={{ color: '#bbbdc0', textAlign: 'center', fontSize: hp('2%') }}>
                                                                                 {item.hours} hr {item.minutes} min
                                                                             </Text>
                                                                             :
-                                                                            <Text style={{ color: 'white', textAlign: 'center', fontSize: hp('2%') }}>
+                                                                            <Text style={{ color: '#bbbdc0', textAlign: 'center', fontSize: hp('2%') }}>
                                                                                 {item.hours} hr 0 min
                                                                             </Text>
                                                                     }
@@ -782,19 +782,19 @@ class LabourList extends Component {
                                                             }}
                                                             >
                                                                 <Left style={{ flexDirection: 'row' }}>
-                                                                    <FastImage
+                                                                    {/* <FastImage
                                                                         style={{
                                                                             width: hp('8%'),
                                                                             height: hp('8%'),
                                                                             borderRadius: hp('8%') / 2
                                                                         }}
                                                                         source={{ uri: item.img }}
-                                                                    />
-                                                                    <View style={{ flexDirection: 'column', paddingLeft: 20 }}>
-                                                                        <Text style={{ color: '#9B9B9B', fontSize: hp('2.5%') }}>
+                                                                    /> */}
+                                                                    <View style={{ flexDirection: 'column', paddingLeft: 10 }}>
+                                                                        <Text style={{ color: 'black', fontSize: hp('2.5%') }}>
                                                                             {item.firstName} {item.lastName}
                                                                         </Text>
-                                                                        <Text style={{ color: '#9B9B9B', fontSize: hp('2%') }}>
+                                                                        <Text style={{ color: '#bbbdc0', fontSize: hp('2%') }}>
                                                                             [{item.skillDTO.skillName}]
                                                                         </Text>
                                                                     </View>
