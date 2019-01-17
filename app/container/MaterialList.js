@@ -181,8 +181,15 @@ class MaterialList extends Component {
                                 break;
                             }
                             else if (serverMat[p].materialDTO.id === item.id && serverMat[p].quantity === item.quantity.toString()) {
-                                serverMat[p].status = '1';
-                                break;
+                                let materialArrayFromEditsheet = this.props.parentComponent.state.materialIds;
+                                for (let t in materialArrayFromEditsheet) {
+                                    if (serverMat[p].materialDTO.id === materialArrayFromEditsheet[t].id) {
+                                        serverMat[p].status = materialArrayFromEditsheet[t].status;
+                                        break;
+                                    }
+                                }
+                                //serverMat[p].status = '1';
+                                //break;
                             }
                         }
 

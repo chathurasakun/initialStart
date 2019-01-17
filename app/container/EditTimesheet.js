@@ -77,7 +77,8 @@ class EditTimesheet extends Component {
         for (let i in array) {
             let obj = {
                 id: array[i].equipmentDTO.id,
-                hours: array[i].hours
+                hours: array[i].hours,
+                status: array[i].status
             }
             equipids.push(obj);
         }
@@ -89,7 +90,8 @@ class EditTimesheet extends Component {
         for (let i in array) {
             let obj = {
                 quantity: array[i].quantity,
-                id: array[i].materialDTO.id
+                id: array[i].materialDTO.id,
+                status: array[i].status
             }
             materialids.push(obj);
         }
@@ -103,7 +105,8 @@ class EditTimesheet extends Component {
                 hours: array[i].hours,
                 id: array[i].workerDTO.id,
                 skillId: array[i].skillDTO.id,
-                skill: array[i].skillDTO.skillName
+                skill: array[i].skillDTO.skillName,
+                status: array[i].status
             }
             laborids.push(obj);
         }
@@ -200,9 +203,9 @@ class EditTimesheet extends Component {
             //console.log(this.state.fromServerMaterial);
             //console.log(this.state.fromServerEquip);
             this.setSkillAndSkillId();
-            console.log('--------------------###$%%%^^^');
+            //console.log('--------------------###$%%%^^^');
             //console.log(this.state.fromServerLabor);
-            console.log(this.state.fromServerExpense);
+            //console.log(this.state.fromServerExpense);
 
             let timeSheetWorkerDTOs = [];
             let timeSheetEquipmentDTOs = [];

@@ -179,8 +179,15 @@ class EquipmentList extends Component {
                                 break;
                             }
                             else if (serverEquip[p].equipmentDTO.id === item.id && serverEquip[p].hours === item.hours.toString()) {
-                                serverEquip[p].status = '1';
-                                break;
+                                let equipmentArrayFromEditsheet = this.props.parentComponent.state.equipIds;
+                                for (let t in equipmentArrayFromEditsheet) {
+                                    if (serverEquip[p].equipmentDTO.id === equipmentArrayFromEditsheet[t].id) {
+                                        serverEquip[p].status = equipmentArrayFromEditsheet[t].status;
+                                        break;
+                                    }
+                                }
+                                // serverEquip[p].status = '1';
+                                // break;
                             }
                         }
 

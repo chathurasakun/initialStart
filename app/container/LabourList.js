@@ -250,8 +250,15 @@ class LabourList extends Component {
                                                     break;
                                                 }
                                                 else if (serverLabor[p].workerDTO.id === item.id && serverLabor[p].hours === item.hours.toString()) {
-                                                    serverLabor[p].status = '1';
-                                                    break;
+                                                    let laborArrayFromEditsheet = this.props.parentComponent.state.laborIds;
+                                                    for (let t in laborArrayFromEditsheet) {
+                                                        if (serverLabor[p].workerDTO.id === laborArrayFromEditsheet[t].id) {
+                                                            serverLabor[p].status = laborArrayFromEditsheet[t].status;
+                                                            break;
+                                                        }
+                                                    }
+                                                    // serverLabor[p].status = '1';
+                                                    // break;
                                                 }
                                             }
 
@@ -316,8 +323,15 @@ class LabourList extends Component {
                                     break;
                                 }
                                 else if (serverLabor[p].workerDTO.id === item.id && serverLabor[p].hours === item.hours.toString()) {
-                                    serverLabor[p].status = '1';
-                                    break;
+                                    let laborArrayFromEditsheet = this.props.parentComponent.state.laborIds;
+                                    for (let t in laborArrayFromEditsheet) {
+                                        if (serverLabor[p].workerDTO.id === laborArrayFromEditsheet[t].id) {
+                                            serverLabor[p].status = laborArrayFromEditsheet[t].status;
+                                            break;
+                                        }
+                                    }
+                                    // serverLabor[p].status = '1';
+                                    // break;
                                 }
                             }
 
@@ -674,7 +688,7 @@ class LabourList extends Component {
                             width: wp('85%'),
                             height: hp('6%'),
                             marginTop: hp('1%'),
-                            marginLeft:wp('1%'),
+                            marginLeft: wp('1%'),
                             padding: hp('1%'),
                             fontSize: hp('2.5%')
                         }}
@@ -687,8 +701,8 @@ class LabourList extends Component {
                             backgroundColor: '#008b00',
                             justifyContent: 'center',
                             borderRadius: 8,
-                            marginLeft:wp('1%'),
-                            marginRight:wp('1%'),
+                            marginLeft: wp('1%'),
+                            marginRight: wp('1%'),
                             marginTop: hp('1%')
                         }}
                         onPress={() => this.clearSelectedList()}
