@@ -655,7 +655,7 @@ class LabourList extends Component {
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <View style={{ flex: 0.1 }}>
                             <Button transparent onPress={() => { Actions.pop() }}>
-                                <Icons name='left' style={{ fontSize: hp('2%'), color: '#FFFFFF', fontWeight: 'bold' }} />
+                                <Icons name='left' style={{ fontSize: hp('3%'), color: '#FFFFFF', fontWeight: 'bold' }} />
                             </Button>
                         </View>
                         <View style={{ flex: 0.8, alignItems: 'center' }}>
@@ -671,25 +671,25 @@ class LabourList extends Component {
                         style={{
                             borderColor: '#CCC',
                             borderWidth: 1,
-                            width: wp('86%'),
+                            width: wp('85%'),
                             height: hp('6%'),
-                            borderRadius: 8,
                             marginTop: hp('1%'),
-                            padding: hp('2%'),
-                            fontSize: hp('2%')
+                            marginLeft:wp('1%'),
+                            padding: hp('1%'),
+                            fontSize: hp('2.5%')
                         }}
                         placeholder="     Start typing to search.."
                     />
                     <Button
                         style={{
-                            alignSelf: 'flex-end',
                             width: wp('12%'),
                             height: hp('6%'),
                             backgroundColor: '#008b00',
                             justifyContent: 'center',
                             borderRadius: 8,
-                            marginHorizontal: 5,
-                            marginTop: 5
+                            marginLeft:wp('1%'),
+                            marginRight:wp('1%'),
+                            marginTop: hp('1%')
                         }}
                         onPress={() => this.clearSelectedList()}
                     >

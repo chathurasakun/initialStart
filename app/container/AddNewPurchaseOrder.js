@@ -245,7 +245,7 @@ class AddNewPurchaseOrder extends Component {
                     <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
                         <Left>
                             <Button transparent onPress={() => { Actions.pop() }}>
-                                <Icons name='left' style={{ color: '#FFFFFF', fontSize: hp('2%') }} />
+                                <Icons name='left' style={{ color: '#FFFFFF', fontSize: hp('3%') }} />
                             </Button>
                         </Left>
                         <View style={{ alignItems: 'center' }}>

@@ -256,7 +256,7 @@ class ApproverList extends Component {
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <Left>
                             <Button transparent onPress={() => { Actions.pop() }}>
-                                <Icons name='left' style={{ fontSize: hp('2%'), color: '#FFFFFF' }} />
+                                <Icons name='left' style={{ fontSize: hp('3%'), color: '#FFFFFF' }} />
                             </Button>
                         </Left>
                         <View style={{ width: (Metrics.screenWidth / 4) * 2, alignItems: 'center' }}>
@@ -272,25 +272,25 @@ class ApproverList extends Component {
                         style={{
                             borderColor: '#CCC',
                             borderWidth: 1,
-                            width: wp('86%'),
+                            width: wp('85%'),
                             height: hp('6%'),
-                            borderRadius: 8,
                             marginTop: hp('1%'),
-                            padding: hp('2%'),
-                            fontSize: hp('2%')
+                            marginLeft: wp('1%'),
+                            padding: hp('1%'),
+                            fontSize: hp('2.5%')
                         }}
                         placeholder="     Start typing to search.."
                     />
                     <Button
                         style={{
-                            alignSelf: 'flex-end',
                             width: wp('12%'),
                             height: hp('6%'),
                             backgroundColor: '#008b00',
                             justifyContent: 'center',
                             borderRadius: 8,
-                            marginHorizontal: 5,
-                            marginTop: 5
+                            marginLeft: wp('1%'),
+                            marginRight: wp('1%'),
+                            marginTop: hp('1%')
                         }}
                         onPress={() => this.clearSelectedList()}
                     >
