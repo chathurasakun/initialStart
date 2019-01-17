@@ -418,20 +418,20 @@ class ViewTimesheetForm extends Component {
 
     setColor = (status) => {
         if (status === 4)
-            return (color = '#008B02');
+            return (color = '#00af5f');
         else if (status === 3)
-            return (color = '#F5A623');
+            return (color = '#f19a10');
         else if (status === 5)
-            return (color = '#C6283A');
+            return (color = '#e85442');
     }
 
     setType = (status) => {
         if (status === 4)
-            return 'Approved';
+            return 'APPROVED';
         else if (status === 3)
-            return 'Pending';
+            return 'PENDING';
         else if (status === 5)
-            return 'Rejected';
+            return 'REJECTED';
     }
 
     renderComments = (item) => {
@@ -744,7 +744,7 @@ class ViewTimesheetForm extends Component {
                     dialogTitle={
                         <DialogTitle
                             title='Add Comment'
-                            style={{ backgroundColor: '#021aee' }}
+                            style={{ backgroundColor: '#3a5997' }}
                             textStyle={{ color: '#FFFFFF', fontSize: hp('2%') }}
                         />
                     }
@@ -765,22 +765,7 @@ class ViewTimesheetForm extends Component {
                                 <Left>
                                     <Button
                                         style={{
-                                            backgroundColor: '#021aee',
-                                            width: wp('30%'),
-                                            height: hp('5%'),
-                                            borderRadius: wp('5%'),
-                                            marginLeft: wp('2%'),
-                                            alignItems: 'center',
-                                            justifyContent: 'center'
-                                        }}
-                                        onPress={() => this.setState({ visible: false })}>
-                                        <Text style={{ color: '#FFFFFF', fontSize: hp('2%') }}>Cancel</Text>
-                                    </Button>
-                                </Left>
-                                <Right>
-                                    <Button
-                                        style={{
-                                            backgroundColor: '#021aee',
+                                            backgroundColor: '#007CC4',
                                             width: wp('30%'),
                                             height: hp('5%'),
                                             borderRadius: wp('5%'),
@@ -790,6 +775,22 @@ class ViewTimesheetForm extends Component {
                                         }}
                                         onPress={() => this.handleSubmit()}>
                                         <Text style={{ color: '#FFFFFF', fontSize: hp('2%') }}>Submit</Text>
+                                    </Button>
+                                </Left>
+                                <Right>
+                                    <Button
+                                        bordered
+                                        style={{
+                                            backgroundColor: '#FFFFFF',
+                                            width: wp('30%'),
+                                            height: hp('5%'),
+                                            borderRadius: wp('5%'),
+                                            marginLeft: wp('2%'),
+                                            alignItems: 'center',
+                                            justifyContent: 'center'
+                                        }}
+                                        onPress={() => this.setState({ visible: false })}>
+                                        <Text style={{ color: '#007CC4', fontSize: hp('2%') }}>Cancel</Text>
                                     </Button>
                                 </Right>
                             </View>

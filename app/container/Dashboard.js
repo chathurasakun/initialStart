@@ -278,7 +278,7 @@ class Dashboard extends Component {
                                 :
                                 <View
                                     style={{
-                                        height: hp('100%'),
+                                        height: hp('80%'),
                                         marginTop: hp('3%'),
                                         padding: wp('3%')
                                     }}
