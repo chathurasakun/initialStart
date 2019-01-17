@@ -219,6 +219,16 @@ class CreateNewTimeSheet extends Component {
                                 { cancelable: false }
                             );
                         }
+                        else if (responseJson.httpStatus === 'BAD_REQUEST') {
+                            EventRegister.emit('myCustomEvent10', false);
+
+                            Alert.alert(
+                                'Failed',
+                                `${responseJson.message.message}`,
+                                [{ text: 'OK', onPress: () => { } }],
+                                { cancelable: false }
+                            );
+                        }
                         else {
                             EventRegister.emit('myCustomEvent10', false);
 
