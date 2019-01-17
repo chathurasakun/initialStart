@@ -291,7 +291,7 @@ class Dashboard extends Component {
                                         <Tab heading='PENDING'
                                             tabStyle={styles.tabHeading}
                                             activeTabStyle={{ backgroundColor: '#f19a10' }}
-                                            textStyle={styles.tabHeadingText}
+                                            textStyle={{ color: '#f19a10', fontSize: hp('2%') }}
                                             activeTextStyle={styles.activeTabHeadingText}
                                         >
                                             <PendingSheets timesheet={this.state.pendingTimesheet} />
@@ -300,7 +300,7 @@ class Dashboard extends Component {
                                         <Tab heading='APPROVED'
                                             tabStyle={styles.tabHeading}
                                             activeTabStyle={{ backgroundColor: '#00af5f' }}
-                                            textStyle={styles.tabHeadingText}
+                                            textStyle={{ color: '#00af5f', fontSize: hp('2%') }}
                                             activeTextStyle={styles.activeTabHeadingText}
                                         >
                                             <ApprovedSheets timesheet={this.state.approvedTimesheet} />
@@ -309,7 +309,7 @@ class Dashboard extends Component {
                                         <Tab heading='REJECTED'
                                             tabStyle={styles.tabHeading}
                                             activeTabStyle={{ backgroundColor: '#e85442' }}
-                                            textStyle={styles.tabHeadingText}
+                                            textStyle={{ color: '#e85442', fontSize: hp('2%') }}
                                             activeTextStyle={styles.activeTabHeadingText}
                                         >
                                             <ApprovedSheets timesheet={this.state.rejectedTimesheet} />

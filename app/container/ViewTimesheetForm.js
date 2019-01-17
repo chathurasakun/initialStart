@@ -445,7 +445,7 @@ class ViewTimesheetForm extends Component {
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <Left>
                             <Button transparent onPress={() => { Actions.pop() }}>
-                                <Icons name='left' style={{ fontSize: hp('2%'), color: '#FFFFFF' }} />
+                                <Icons name='left' style={{ fontSize: hp('3%'), color: '#FFFFFF' }} />
                             </Button>
                         </Left>
                         <View style={{ alignItems: 'center' }}>
@@ -463,7 +463,7 @@ class ViewTimesheetForm extends Component {
                     </View>
                 </Header>
 
-                <ScrollView>
+                <ScrollView bounces={false}>
                     {(this.state.isFetchingTimesheetDetails === false) ?
                         <View>
                             <Card>
@@ -693,7 +693,7 @@ class ViewTimesheetForm extends Component {
                     }
 
                     {(this.state.userType !== 'SUPERVISOR' && this.state.isFetchingTimesheetDetails === false && this.props.status === 3) ?
-                        <View style={{ alignItems: 'flex-end', flexDirection: 'row', marginTop: hp('2%') }}>
+                        <View style={{ flexDirection: 'row', marginTop: hp('2%'), marginBottom: hp('2%') }}>
                             <Left>
                                 <Button
                                     style={{
