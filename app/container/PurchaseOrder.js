@@ -134,16 +134,16 @@ class PurchaseOrder extends Component {
                     <Left style={{ flexDirection: 'column' }}>
                         <Text
                             style={{
-                                fontWeight: 'bold',
-                                fontSize: hp('2%')
+                                fontSize: hp('2.5%'),
+                                color: '#484848'
                             }}
                         >
                             {item.description}
                         </Text>
-                        <Text style={{ color: '#9B9B9B', fontSize: hp('2%') }}>{item.poNumber}</Text>
+                        <Text style={{ color: '#bbbdc0', fontSize: hp('2.5%'), marginTop: hp('1%'), fontWeight: 'bold' }}>{item.poNumber}</Text>
                     </Left>
                     <Right>
-                        <Icons name='right' style={{ color: '#9B9B9B', fontSize: hp('2%') }} />
+                        <Icons name='right' style={{ color: '#484848', fontSize: hp('3%') }} />
                     </Right>
                 </View>
             </ListItem>
@@ -160,7 +160,7 @@ class PurchaseOrder extends Component {
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <Left>
                             <Button transparent onPress={() => { Actions.dashboard() }}>
-                                <Icons name='left' style={{ color: '#FFFFFF', fontSize: hp('2%') }} />
+                                <Icons name='left' style={{ color: '#FFFFFF', fontSize: hp('3%') }} />
                             </Button>
                         </Left>
                         <View style={{ alignItems: 'center' }}>
@@ -168,7 +168,7 @@ class PurchaseOrder extends Component {
                         </View>
                         <Right>
                             <Button transparent onPress={() => { Actions.push('addNewPurchaseOrder') }}>
-                                <Icons name='plus' style={{ color: '#FFFFFF', fontSize: hp('2%') }} />
+                                <Icons name='plus' style={{ color: '#FFFFFF', fontSize: hp('3%') }} />
                             </Button>
                         </Right>
                     </View>
@@ -179,32 +179,33 @@ class PurchaseOrder extends Component {
                     style={{
                         borderColor: '#CCC',
                         borderWidth: 1,
-                        width: wp('100%'),
+                        width: wp('95%'),
                         height: hp('6%'),
-                        borderRadius: 8,
+                        marginLeft: wp('2.5%'),
+                        marginRight: wp('2.5%'),
                         marginTop: hp('1%'),
-                        padding: hp('2%'),
-                        fontSize: hp('2%')
+                        fontSize: hp('2.5%'),
+                        padding: hp('1%')
                     }}
                     placeholder="     Start typing to search.."
                 />
 
-                <ListItem>
+                {/* <ListItem>
                     <View style={{ flexDirection: 'row' }}>
                         <Left>
                             <Text style={{ fontSize: hp('2%') }} >Show only related Purchase Orders</Text>
                         </Left>
-                        {/* <View style={{ paddingRight: hp('1%') }}>
+                        <View style={{ paddingRight: hp('1%') }}>
                             <Switch
                                 value={this.state.switchVar}
                                 onValueChange={(value) => this.SwitchGo(value)}
                                 style={{ transform: [{ scaleX: hp('0.15%') }, { scaleY: hp('0.15%') }] }}
                             />
-                        </View> */}
+                        </View>
                     </View>
-                </ListItem>
+                </ListItem> */}
 
-                <View style={{ backgroundColor: '#ededed', height: hp('2%') }} />
+                {/* <View style={{ backgroundColor: '#ededed', height: hp('2%') }} /> */}
 
                 <ScrollView>
                     {(this.state.isFetchingList === false) ?
