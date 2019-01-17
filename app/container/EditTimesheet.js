@@ -527,24 +527,31 @@ class EditTimesheet extends Component {
 
     setColor = (status) => {
         if (status === 4)
-            return (color = '#008B02');
+            return (color = '#00af5f');
         else if (status === 3)
-            return (color = '#F5A623');
-        else if (status == 5)
-            return (color = '#C6283A');
+            return (color = '#f19a10');
+        else if (status === 5)
+            return (color = '#e85442');
     }
 
     setType = (status) => {
         if (status === 4)
-            return 'Approved';
+            return 'APPROVED';
         else if (status === 3)
-            return 'Pending';
+            return 'PENDING';
         else if (status === 5)
-            return 'Rejected';
+            return 'REJECTED';
     }
 
     renderComments = (item) => {
-        return (<Text style={{ fontWeight: 'bold', color: '#9B9B9B' }}>{item.description}</Text>)
+        let comment = item.description;
+        comment = comment.replace('{comment:', "");
+        comment = comment.replace('}', "");
+        return (
+            <View style={{ flexDirection: 'column' }}>
+                <Text style={{ fontWeight: 'bold', color: '#484848', fontSize: hp('2%'), paddingLeft: wp('2%') }}>{comment}</Text>
+            </View>
+        )
     }
 
     render = () => {
@@ -570,7 +577,7 @@ class EditTimesheet extends Component {
                                     );
                                 }}
                             >
-                                <Icons name='left' style={{ fontSize: hp('2%'), color: '#FFFFFF' }} />
+                                <Icons name='left' style={{ fontSize: hp('3%'), color: '#FFFFFF' }} />
                             </Button>
                         </Left>
                         <View style={{ alignItems: 'center' }}>
@@ -584,7 +591,7 @@ class EditTimesheet extends Component {
                     </View>
                 </Header>
 
-                <ScrollView>
+                <ScrollView bounces={false}>
                     <View>
                         <Card>
                             <CardItem header bordered>
@@ -751,29 +758,28 @@ class EditTimesheet extends Component {
                                     </View>
                                 </TouchableOpacity>
                             </CardItem>
+                        </Card>
 
+                        <Card>
+                            <CardItem header bordered>
+                                <Text
+                                    style={{
+                                        fontSize: hp('2.5%'),
+                                        textAlign: 'left',
+                                        color: '#e85442',
+                                        fontWeight: 'bold'
+                                    }}
+                                >
+                                    Reason for rejection
+                                </Text>
+                            </CardItem>
                             <CardItem bordered>
-                                <View style={{ flexDirection: 'row' }}>
-                                    <Left>
-                                        <Text
-                                            style={{
-                                                fontSize: hp('2%'),
-                                                textAlign: 'left',
-                                                color: '#C6283A'
-                                            }}
-                                        >
-                                            Reason for rejection
-                                        </Text>
-                                    </Left>
-                                    <Right>
-                                        <FlatList
-                                            data={this.props.parentObject.state.commentsArray}
-                                            keyExtractor={(item, index) => item.id}
-                                            renderItem={({ item }) => this.renderComments(item)}
-                                            scrollEnabled={false}
-                                        />
-                                    </Right>
-                                </View>
+                                <FlatList
+                                    data={this.props.parentObject.state.commentsArray}
+                                    keyExtractor={(item, index) => item.id}
+                                    renderItem={({ item }) => this.renderComments(item)}
+                                    scrollEnabled={false}
+                                />
                             </CardItem>
                         </Card>
 
@@ -808,7 +814,7 @@ class EditTimesheet extends Component {
                                     extraData={this.state}
                                 />
                                 :
-                                <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: wp('3%') }}>No Labors to display</Text>
+                                <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: wp('3%') }}>Not added.</Text>
                             }
                         </Card>
 
@@ -843,7 +849,7 @@ class EditTimesheet extends Component {
                                     extraData={this.state}
                                 />
                                 :
-                                <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: wp('3%') }}>No Equipments to display</Text>
+                                <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: wp('3%') }}>Not added.</Text>
                             }
                         </Card>
 
@@ -878,7 +884,7 @@ class EditTimesheet extends Component {
                                     extraData={this.state}
                                 />
                                 :
-                                <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: wp('3%') }}>No Materials to display</Text>
+                                <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: wp('3%') }}>Not added.</Text>
                             }
                         </Card>
 
@@ -913,7 +919,7 @@ class EditTimesheet extends Component {
                                     extraData={this.state}
                                 />
                                 :
-                                <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: wp('3%') }}>No Expenses to display</Text>
+                                <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: wp('3%') }}>Not added.</Text>
                             }
                         </Card>
                     </View>

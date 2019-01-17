@@ -435,7 +435,14 @@ class ViewTimesheetForm extends Component {
     }
 
     renderComments = (item) => {
-        return (<Text style={{ fontWeight: 'bold', color: '#9B9B9B', fontSize: hp('2%') }}>{item.description}</Text>)
+        let comment = item.description;
+        comment = comment.replace('{comment:', "");
+        comment = comment.replace('}', "");
+        return (
+            <View style={{ flexDirection: 'column' }}>
+                <Text style={{ fontWeight: 'bold', color: '#484848', fontSize: hp('2%'), paddingLeft: wp('2%') }}>{comment}</Text>
+            </View>
+        )
     }
 
     render = () => {
@@ -590,37 +597,36 @@ class ViewTimesheetForm extends Component {
                                                 <Text style={{ color: '#9B9B9B', fontSize: hp('2%') }}>{this.state.approverName}</Text>
                                             </Right>
                                         </View>
-
-                                        <View style={{ padding: 5 }} />
-
-                                        {(this.state.userType === 'SUPERVISOR' && this.props.timesheetStatus === 5) ?
-                                            <View style={{ flexDirection: 'row' }}>
-                                                <Left>
-                                                    <Text
-                                                        style={{
-                                                            fontSize: hp('2%'),
-                                                            textAlign: 'left',
-                                                            color: '#C6283A'
-                                                        }}
-                                                    >
-                                                        Reason for rejection
-                                                    </Text>
-                                                </Left>
-                                                <Right>
-                                                    <FlatList
-                                                        data={this.state.commentsArray}
-                                                        keyExtractor={(item, index) => item.id}
-                                                        renderItem={({ item }) => this.renderComments(item)}
-                                                        scrollEnabled={false}
-                                                    />
-                                                </Right>
-                                            </View>
-                                            :
-                                            null
-                                        }
                                     </Body>
                                 </CardItem>
                             </Card>
+
+                            {(this.state.userType === 'SUPERVISOR' && this.props.timesheetStatus === 5) ?
+                                <Card>
+                                    <CardItem header bordered>
+                                        <Text
+                                            style={{
+                                                fontSize: hp('2.5%'),
+                                                textAlign: 'left',
+                                                color: '#e85442',
+                                                fontWeight: 'bold'
+                                            }}
+                                        >
+                                            Reason for rejection
+                                        </Text>
+                                    </CardItem>
+                                    <CardItem bordered>
+                                        <FlatList
+                                            data={this.state.commentsArray}
+                                            keyExtractor={(item, index) => item.id}
+                                            renderItem={({ item }) => this.renderComments(item)}
+                                            scrollEnabled={false}
+                                        />
+                                    </CardItem>
+                                </Card>
+                                :
+                                null
+                            }
 
                             <Card>
                                 <CardItem header bordered>
@@ -650,7 +656,7 @@ class ViewTimesheetForm extends Component {
                                         scrollEnabled={false}
                                     />
                                     :
-                                    <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: 25 }}>Not added.</Text>
+                                    <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: wp('3%') }}>Not added.</Text>
                                 }
                             </Card>
 
@@ -666,7 +672,7 @@ class ViewTimesheetForm extends Component {
                                         scrollEnabled={false}
                                     />
                                     :
-                                    <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: 25 }}>Not added.</Text>
+                                    <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: wp('3%') }}>Not added.</Text>
                                 }
                             </Card>
 
@@ -682,7 +688,7 @@ class ViewTimesheetForm extends Component {
                                         scrollEnabled={false}
                                     />
                                     :
-                                    <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: 25 }}>Not added.</Text>
+                                    <Text style={{ fontSize: hp('2.5%'), color: '#9B9B9B', paddingLeft: wp('3%') }}>Not added.</Text>
                                 }
                             </Card>
                         </View>
