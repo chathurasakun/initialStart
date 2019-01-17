@@ -332,7 +332,7 @@ class ApproverList extends Component {
                                                         (item.selected) ?
                                                             <View
                                                                 style={{
-                                                                    backgroundColor: 'rgba(0,0,0,0.8)',
+                                                                    backgroundColor: '#e1f3fd',
                                                                     alignItems: 'center',
                                                                     paddingLeft: 20,
                                                                     paddingRight: 20,
@@ -342,12 +342,12 @@ class ApproverList extends Component {
                                                                 }}
                                                             >
                                                                 <Left style={{ flexDirection: 'row' }}>
-                                                                    <Icon name='checkbox' style={{ color: 'white', fontSize: hp('3.5%') }} />
+                                                                    {/* <Icon name='checkbox' style={{ color: 'white', fontSize: hp('3.5%') }} /> */}
                                                                     <View style={{ paddingLeft: 20, flexDirection: 'column' }}>
-                                                                        <Text style={{ color: 'white', fontSize: hp('2.5%') }}>
+                                                                        <Text style={{ color: 'black', fontSize: hp('2.5%') }}>
                                                                             {item.firstName} {item.lastName}
                                                                         </Text>
-                                                                        <Text style={{ color: 'white', fontSize: hp('2%') }}>
+                                                                        <Text style={{ color: '#bbbdc0', fontSize: hp('2%') }}>
                                                                             {item.email}
                                                                         </Text>
                                                                     </View>
@@ -363,12 +363,12 @@ class ApproverList extends Component {
                                                             >
                                                                 <Left style={{ flexDirection: 'column' }}>
                                                                     <View style={{ paddingLeft: 20 }}>
-                                                                        <Text style={{ color: '#9B9B9B', fontSize: hp('2.5%') }}>
+                                                                        <Text style={{ color: 'black', fontSize: hp('2.5%') }}>
                                                                             {item.firstName} {item.lastName}
                                                                         </Text>
                                                                     </View>
                                                                     <View style={{ paddingLeft: 20 }}>
-                                                                        <Text style={{ color: '#9B9B9B', fontSize: hp('2%') }}>
+                                                                        <Text style={{ color: '#bbbdc0', fontSize: hp('2%') }}>
                                                                             {item.email}
                                                                         </Text>
                                                                     </View>

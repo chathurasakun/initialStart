@@ -57,7 +57,7 @@ class InterEquip extends Component {
                     {(item.selected) ?
                         <View
                             style={{
-                                backgroundColor: 'rgba(0,0,0,0.8)',
+                                backgroundColor: '#e1f3fd',
                                 alignItems: 'center',
                                 paddingLeft: 20,
                                 paddingRight: 20,
@@ -67,32 +67,32 @@ class InterEquip extends Component {
                             }}
                         >
                             <Left style={{ flexDirection: 'row' }}>
-                                <Icon name='checkbox' style={{ color: 'white' }} />
+                                {/* <Icon name='checkbox' style={{ color: 'white' }} /> */}
                                 <View style={{ paddingLeft: 20, flexDirection: 'column' }}>
-                                    <Text style={{ color: 'white', fontSize: hp('2.5%') }}>
+                                    <Text style={{ color: 'black', fontSize: hp('2.5%') }}>
                                         {item.equipmentName}
                                     </Text>
-                                    <Text style={{ color: 'white', fontSize: hp('2%') }}>
+                                    <Text style={{ color: '#bbbdc0', fontSize: hp('2%') }}>
                                         {item.equipmentNumber}
                                     </Text>
                                 </View>
                                 <Right>
                                     {(item.hours > 1) ?
                                         (item.minutes > 0) ?
-                                            <Text style={{ color: 'white', textAlign: 'center', fontSize: hp('2%') }}>
+                                            <Text style={{ color: '#bbbdc0', textAlign: 'center', fontSize: hp('2%') }}>
                                                 {item.hours} hrs {item.minutes} min
                                             </Text>
                                             :
-                                            <Text style={{ color: 'white', textAlign: 'center', fontSize: hp('2%') }}>
+                                            <Text style={{ color: '#bbbdc0', textAlign: 'center', fontSize: hp('2%') }}>
                                                 {item.hours} hrs 0 min
                                             </Text>
                                         :
                                         (item.minutes > 0) ?
-                                            <Text style={{ color: 'white', textAlign: 'center', fontSize: hp('2%') }}>
+                                            <Text style={{ color: '#bbbdc0', textAlign: 'center', fontSize: hp('2%') }}>
                                                 {item.hours} hr {item.minutes} min
                                             </Text>
                                             :
-                                            <Text style={{ color: 'white', textAlign: 'center', fontSize: hp('2%') }}>
+                                            <Text style={{ color: '#bbbdc0', textAlign: 'center', fontSize: hp('2%') }}>
                                                 {item.hours} hr 0 min
                                             </Text>
                                     }

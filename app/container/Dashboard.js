@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, AsyncStorage, Alert, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { Text, View, FlatList, AsyncStorage, Alert, ActivityIndicator, TouchableOpacity, RefreshControl, ScrollView } from 'react-native';
 import { Container, Tabs, Tab, Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import styles from './styles/DashboardStyle';
@@ -53,6 +53,10 @@ class Dashboard extends Component {
         catch (exception) {
             return false;
         }
+    }
+
+    _onRefresh() {
+        this.getUserDetails();
     }
 
     getUserDetails = () => {
@@ -222,101 +226,113 @@ class Dashboard extends Component {
     render = () => {
         return (
             <Container>
-                <View style={{ flexDirection: 'column', backgroundColor: '#ECEFF1', height: hp('100%') }}>
-                    {(this.state.isFetchingTimesheet === false && this.state.isFetchingUser === false) ?
-                        (this.state.userRole === 'SUPERVISOR') ?
-                            <View>
+                <ScrollView
+                    refreshControl={<RefreshControl
+                        refreshing={this.state.isFetchingTimesheet && this.state.isFetchingUser}
+                        onRefresh={this._onRefresh.bind(this)} />}
+                >
+                    <View
+                        style={{
+                            flexDirection: 'column',
+                            backgroundColor: '#ECEFF1',
+                            height: hp('100%')
+                        }}
+                    >
+                        {(this.state.isFetchingTimesheet === false && this.state.isFetchingUser === false) ?
+                            (this.state.userRole === 'SUPERVISOR') ?
+                                <View>
+                                    <View
+                                        style={{
+                                            position: 'absolute',
+                                            marginRight: wp('15%'),
+                                            marginLeft: wp('15%'),
+                                            top: hp('2%'),
+                                            alignItems: 'center'
+                                        }}
+                                    >
+                                        <Button style={[styles.buttonContainer, styles.button1]} onPress={() => Actions.purchseDetail({ fromCreateNew: true })}>
+                                            <Text style={styles.text1}>Create New Timesheet</Text>
+                                        </Button>
+
+                                        <Button bordered style={[styles.secondButtonContainer, styles.button2]} onPress={() => Actions.purchseDetail({ fromCreateNew: false })}>
+                                            <Text style={styles.text2}>View Timesheet History</Text>
+                                        </Button>
+                                    </View>
+
+                                    <View style={{ marginTop: hp('22%'), alignItems: 'center' }}>
+                                        <Text style={{ fontSize: hp('4%'), color: '#484848' }}>Existing Timesheets</Text>
+                                    </View>
+
+                                    <View style={[styles.listContainer]}>
+                                        <FlatList
+                                            data={this.state.supervisorTimesheet}
+                                            keyExtractor={(item, index) => item.id}
+                                            renderItem={({ item }) => this.renderListItem(item)}
+                                            scrollEnabled={false}
+                                            ListFooterComponent={() => {
+                                                return (<View style={{ borderTopColor: '#d1d2d4', borderTopWidth: 1 }} />)
+                                            }}
+                                        />
+                                    </View>
+                                </View>
+                                :
                                 <View
                                     style={{
-                                        position: 'absolute',
-                                        marginRight: wp('15%'),
-                                        marginLeft: wp('15%'),
-                                        top: hp('2%'),
-                                        alignItems: 'center'
+                                        height: hp('100%'),
+                                        marginTop: hp('3%'),
+                                        padding: wp('3%')
                                     }}
                                 >
-                                    <Button style={[styles.buttonContainer, styles.button1]} onPress={() => Actions.purchseDetail({ fromCreateNew: true })}>
-                                        <Text style={styles.text1}>Create New Timesheet</Text>
-                                    </Button>
+                                    <Tabs
+                                        initialPage={0}
+                                        tabBarUnderlineStyle={styles.tabBarUnderline}
+                                        locked={true}
+                                    >
+                                        <Tab heading='Pending'
+                                            tabStyle={styles.tabHeading}
+                                            activeTabStyle={styles.activeTabStyle}
+                                            textStyle={styles.tabHeadingText}
+                                            activeTextStyle={styles.activeTabHeadingText}
+                                        >
+                                            <PendingSheets timesheet={this.state.pendingTimesheet} />
+                                        </Tab>
 
-                                    <Button bordered style={[styles.secondButtonContainer, styles.button2]} onPress={() => Actions.purchseDetail({ fromCreateNew: false })}>
-                                        <Text style={styles.text2}>View Timesheet History</Text>
-                                    </Button>
-                                </View>
+                                        <Tab heading='Approved'
+                                            tabStyle={styles.tabHeading}
+                                            activeTabStyle={styles.activeTabStyle}
+                                            textStyle={styles.tabHeadingText}
+                                            activeTextStyle={styles.activeTabHeadingText}
+                                        >
+                                            <ApprovedSheets timesheet={this.state.approvedTimesheet} />
+                                        </Tab>
 
-                                <View style={{ marginTop: hp('22%'), alignItems: 'center' }}>
-                                    <Text style={{ fontSize: hp('4%'), color: '#484848' }}>Existing Timesheets</Text>
+                                        <Tab heading='Rejected'
+                                            tabStyle={styles.tabHeading}
+                                            activeTabStyle={styles.activeTabStyle}
+                                            textStyle={styles.tabHeadingText}
+                                            activeTextStyle={styles.activeTabHeadingText}
+                                        >
+                                            <ApprovedSheets timesheet={this.state.rejectedTimesheet} />
+                                        </Tab>
+                                    </Tabs>
                                 </View>
-
-                                <View style={[styles.listContainer]}>
-                                    <FlatList
-                                        data={this.state.supervisorTimesheet}
-                                        keyExtractor={(item, index) => item.id}
-                                        renderItem={({ item }) => this.renderListItem(item)}
-                                        scrollEnabled={false}
-                                        ListFooterComponent={() => {
-                                            return (<View style={{ borderTopColor: '#d1d2d4', borderTopWidth: 1 }} />)
-                                        }}
-                                    />
-                                </View>
-                            </View>
                             :
-                            <View
+                            <ActivityIndicator
                                 style={{
-                                    height: hp('100%'),
-                                    marginTop: hp('3%'),
-                                    padding: wp('3%')
+                                    position: 'absolute',
+                                    left: 0,
+                                    right: 0,
+                                    top: 0,
+                                    bottom: 0,
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
                                 }}
-                            >
-                                <Tabs
-                                    initialPage={0}
-                                    tabBarUnderlineStyle={styles.tabBarUnderline}
-                                    locked={true}
-                                >
-                                    <Tab heading='Pending'
-                                        tabStyle={styles.tabHeading}
-                                        activeTabStyle={styles.activeTabStyle}
-                                        textStyle={styles.tabHeadingText}
-                                        activeTextStyle={styles.activeTabHeadingText}
-                                    >
-                                        <PendingSheets timesheet={this.state.pendingTimesheet} />
-                                    </Tab>
-
-                                    <Tab heading='Approved'
-                                        tabStyle={styles.tabHeading}
-                                        activeTabStyle={styles.activeTabStyle}
-                                        textStyle={styles.tabHeadingText}
-                                        activeTextStyle={styles.activeTabHeadingText}
-                                    >
-                                        <ApprovedSheets timesheet={this.state.approvedTimesheet} />
-                                    </Tab>
-
-                                    <Tab heading='Rejected'
-                                        tabStyle={styles.tabHeading}
-                                        activeTabStyle={styles.activeTabStyle}
-                                        textStyle={styles.tabHeadingText}
-                                        activeTextStyle={styles.activeTabHeadingText}
-                                    >
-                                        <ApprovedSheets timesheet={this.state.rejectedTimesheet} />
-                                    </Tab>
-                                </Tabs>
-                            </View>
-                        :
-                        <ActivityIndicator
-                            style={{
-                                position: 'absolute',
-                                left: 0,
-                                right: 0,
-                                top: 0,
-                                bottom: 0,
-                                alignItems: 'center',
-                                justifyContent: 'center'
-                            }}
-                            animating size='large'
-                            color='#00ff00'
-                        />
-                    }
-                </View>
+                                animating size='large'
+                                color='#00ff00'
+                            />
+                        }
+                    </View>
+                </ScrollView>
             </Container>
         );
     }

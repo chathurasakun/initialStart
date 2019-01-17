@@ -75,6 +75,7 @@ class PendingSheets extends Component {
                     data={this.state.pendingSheets}
                     keyExtractor={(item, index) => item.id}
                     renderItem={({ item }) => this.renderListItem(item)}
+                    scrollEnabled={false}
                     ListFooterComponent={() => {
                         return (<View style={{ borderBottomColor: 'grey', borderBottomWidth: 1 }} />)
                     }}

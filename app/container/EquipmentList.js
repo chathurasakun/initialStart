@@ -496,7 +496,7 @@ class EquipmentList extends Component {
                                                         (item.selected) ?
                                                             <View
                                                                 style={{
-                                                                    backgroundColor: 'rgba(0,0,0,0.8)',
+                                                                    backgroundColor: '#e1f3fd',
                                                                     alignItems: 'center',
                                                                     paddingLeft: 20,
                                                                     paddingRight: 20,
@@ -506,12 +506,12 @@ class EquipmentList extends Component {
                                                                 }}
                                                             >
                                                                 <Left style={{ flexDirection: 'row' }}>
-                                                                    <Icon name='checkbox' style={{ color: 'white', fontSize: hp('3.5%') }} />
+                                                                    {/* <Icon name='checkbox' style={{ color: 'white', fontSize: hp('3.5%') }} /> */}
                                                                     <View style={{ flexDirection: 'column', paddingLeft: 20 }}>
-                                                                        <Text style={{ color: 'white', fontSize: hp('2.5%') }}>
+                                                                        <Text style={{ color: 'black', fontSize: hp('2.5%') }}>
                                                                             {item.equipmentName}
                                                                         </Text>
-                                                                        <Text style={{ color: 'white', fontSize: hp('2%') }}>
+                                                                        <Text style={{ color: '#bbbdc0', fontSize: hp('2%') }}>
                                                                             {item.equipmentNumber}
                                                                         </Text>
                                                                     </View>
@@ -519,20 +519,20 @@ class EquipmentList extends Component {
                                                                 <Right>
                                                                     {(item.hours > 1) ?
                                                                         (item.minutes > 0) ?
-                                                                            <Text style={{ color: 'white', textAlign: 'center', fontSize: hp('2%') }}>
+                                                                            <Text style={{ color: '#bbbdc0', textAlign: 'center', fontSize: hp('2%') }}>
                                                                                 {item.hours} hrs {item.minutes} min
                                                                             </Text>
                                                                             :
-                                                                            <Text style={{ color: 'white', textAlign: 'center', fontSize: hp('2%') }}>
+                                                                            <Text style={{ color: '#bbbdc0', textAlign: 'center', fontSize: hp('2%') }}>
                                                                                 {item.hours} hrs 0 min
                                                                             </Text>
                                                                         :
                                                                         (item.minutes > 0) ?
-                                                                            <Text style={{ color: 'white', textAlign: 'center', fontSize: hp('2%') }}>
+                                                                            <Text style={{ color: '#bbbdc0', textAlign: 'center', fontSize: hp('2%') }}>
                                                                                 {item.hours} hr {item.minutes} min
                                                                             </Text>
                                                                             :
-                                                                            <Text style={{ color: 'white', textAlign: 'center', fontSize: hp('2%') }}>
+                                                                            <Text style={{ color: '#bbbdc0', textAlign: 'center', fontSize: hp('2%') }}>
                                                                                 {item.hours} hr 0 min
                                                                             </Text>
                                                                     }
@@ -547,11 +547,11 @@ class EquipmentList extends Component {
                                                             >
                                                                 <Left style={{ flexDirection: 'row' }}>
                                                                     <View style={{ flexDirection: 'column' }}>
-                                                                        <Text style={{ color: '#9B9B9B', fontSize: hp('2.5%') }}>
+                                                                        <Text style={{ color: 'black', fontSize: hp('2.5%') }}>
                                                                             {item.equipmentName}
                                                                         </Text>
                                                                         <View style={{ padding: 2 }} />
-                                                                        <Text style={{ color: '#9B9B9B', fontSize: hp('2%') }}>
+                                                                        <Text style={{ color: '#bbbdc0', fontSize: hp('2%') }}>
                                                                             {item.equipmentNumber}
                                                                         </Text>
                                                                     </View>

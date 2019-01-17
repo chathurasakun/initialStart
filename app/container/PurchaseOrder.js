@@ -16,7 +16,7 @@ class PurchaseOrder extends Component {
     constructor() {
         super();
         this.state = {
-            switchVar: true,
+            // switchVar: true,
             purchaseOrderList: [],
             searchTerm: '',
             reloadPage: ''
@@ -108,11 +108,11 @@ class PurchaseOrder extends Component {
         })
     }
 
-    SwitchGo = (value) => {
-        this.setState({
-            switchVar: value
-        });
-    }
+    // SwitchGo = (value) => {
+    //     this.setState({
+    //         switchVar: value
+    //     });
+    // }
 
     searchUpdated(term) {
         this.setState({ searchTerm: term })
@@ -194,13 +194,13 @@ class PurchaseOrder extends Component {
                         <Left>
                             <Text style={{ fontSize: hp('2%') }} >Show only related Purchase Orders</Text>
                         </Left>
-                        <View style={{ paddingRight: hp('1%') }}>
+                        {/* <View style={{ paddingRight: hp('1%') }}>
                             <Switch
                                 value={this.state.switchVar}
                                 onValueChange={(value) => this.SwitchGo(value)}
                                 style={{ transform: [{ scaleX: hp('0.15%') }, { scaleY: hp('0.15%') }] }}
                             />
-                        </View>
+                        </View> */}
                     </View>
                 </ListItem>
 
