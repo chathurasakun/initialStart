@@ -56,7 +56,7 @@ class TabBar extends Component {
                                     );
                                 }}
                             >
-                                <Icons name='left' style={{ fontSize: hp('2%'), color: '#FFFFFF' }} />
+                                <Icons name='left' style={{ fontSize: hp('3%'), color: '#FFFFFF' }} />
                             </Button>
                         </View>
                         <View style={{ alignItems: 'center', flex: 0.8 }}>

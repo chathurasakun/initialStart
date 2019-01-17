@@ -316,7 +316,7 @@ class CreateNewTimeSheet extends Component {
                                     <Text style={{ color: '#7ED321', fontSize: hp('1.5%') }}>{this.props.value.costObjectType}</Text>
                                 </Right>
                             </View>
-                            <View style={{ height: hp('10%') }} />
+                            {/* <View style={{ height: hp('10%') }} /> */}
                         </CardItem>
                     </Card>
                     :
@@ -386,7 +386,7 @@ class CreateNewTimeSheet extends Component {
                                     <Text style={{ color: '#7ED321', fontSize: hp('1.5%') }}>{this.props.value.costObjectType}</Text>
                                 </Right>
                             </View>
-                            <View style={{ height: hp('10%') }} />
+                            {/* <View style={{ height: hp('10%') }} /> */}
                         </CardItem>
                     </Card>
                 }
