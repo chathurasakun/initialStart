@@ -288,27 +288,27 @@ class Dashboard extends Component {
                                         tabBarUnderlineStyle={styles.tabBarUnderline}
                                         locked={true}
                                     >
-                                        <Tab heading='Pending'
+                                        <Tab heading='PENDING'
                                             tabStyle={styles.tabHeading}
-                                            activeTabStyle={styles.activeTabStyle}
+                                            activeTabStyle={{ backgroundColor: '#f19a10' }}
                                             textStyle={styles.tabHeadingText}
                                             activeTextStyle={styles.activeTabHeadingText}
                                         >
                                             <PendingSheets timesheet={this.state.pendingTimesheet} />
                                         </Tab>
 
-                                        <Tab heading='Approved'
+                                        <Tab heading='APPROVED'
                                             tabStyle={styles.tabHeading}
-                                            activeTabStyle={styles.activeTabStyle}
+                                            activeTabStyle={{ backgroundColor: '#00af5f' }}
                                             textStyle={styles.tabHeadingText}
                                             activeTextStyle={styles.activeTabHeadingText}
                                         >
                                             <ApprovedSheets timesheet={this.state.approvedTimesheet} />
                                         </Tab>
 
-                                        <Tab heading='Rejected'
+                                        <Tab heading='REJECTED'
                                             tabStyle={styles.tabHeading}
-                                            activeTabStyle={styles.activeTabStyle}
+                                            activeTabStyle={{ backgroundColor: '#e85442' }}
                                             textStyle={styles.tabHeadingText}
                                             activeTextStyle={styles.activeTabHeadingText}
                                         >
