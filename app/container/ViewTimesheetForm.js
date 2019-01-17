@@ -71,16 +71,56 @@ class ViewTimesheetForm extends Component {
             timesheetDate: this.convertToYearMonthDate(timesheetObj.timesheetDate),
             shift: timesheetObj.timesheetShift,
             approverName: `${timesheetObj.approverDTO.firstName} ${timesheetObj.approverDTO.lastName}`,
-            labourList: timesheetObj.timeSheetWorkerDTOs,
-            materialList: timesheetObj.timeSheetMaterialDTOs,
-            equipList: timesheetObj.timeSheetEquipmentDTOs,
+            labourList: this.removeDeletedLabor(timesheetObj.timeSheetWorkerDTOs),
+            materialList: this.removeDeletedMaterial(timesheetObj.timeSheetMaterialDTOs),
+            equipList: this.removeDeletedEquipment(timesheetObj.timeSheetEquipmentDTOs),
             pid: timesheetObj.purchaseOrderDTO.id,
             approverList: timesheetObj.approverDTO,
-            expenses: timesheetObj.timeSheetExpensesDTOs,
+            expenses: this.removeDeletedExpense(timesheetObj.timeSheetExpensesDTOs),
             approverStatus: timesheetObj.status,
             commentsArray: timesheetObj.timeSheetCommentsDTOs,
             timesheetDateToFormat: this.convertToFormat(timesheetObj.timesheetDate)
         });
+    }
+
+    removeDeletedLabor = (array) => {
+        let worker = [];
+        for (let i in array) {
+            if (array[i].status !== 6) {
+                worker.push(array[i]);
+            }
+        }
+        return worker;
+    }
+
+    removeDeletedEquipment = (array) => {
+        let equipment = [];
+        for (let i in array) {
+            if (array[i].status !== 6) {
+                equipment.push(array[i]);
+            }
+        }
+        return equipment;
+    }
+
+    removeDeletedMaterial = (array) => {
+        let material = [];
+        for (let i in array) {
+            if (array[i].status !== 6) {
+                material.push(array[i]);
+            }
+        }
+        return material;
+    }
+
+    removeDeletedExpense = (array) => {
+        let expense = [];
+        for (let i in array) {
+            if (array[i].status !== 6) {
+                expense.push(array[i]);
+            }
+        }
+        return expense;
     }
 
     renderLabourList = (labourList) => {
