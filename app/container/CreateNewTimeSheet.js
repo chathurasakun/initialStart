@@ -78,7 +78,7 @@ class CreateNewTimeSheet extends Component {
                 let array1 = [];
                 this.state.labourList.map((item) => {
                     array1.push({
-                        hours: item.hours,
+                        hours: parseFloat(item.hours) + parseFloat(item.minutes / 60),
                         workerDTO: {
                             id: `${item.id}`
                         },
@@ -91,7 +91,7 @@ class CreateNewTimeSheet extends Component {
                 let array2 = [];
                 this.state.equipList.map((item) => {
                     array2.push({
-                        hours: item.hours,
+                        hours: parseFloat(item.hours) + parseFloat(item.minutes / 60),
                         equipmentDTO: {
                             id: `${item.id}`
                         }

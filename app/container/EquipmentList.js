@@ -175,7 +175,7 @@ class EquipmentList extends Component {
                         for (let p in serverEquip) {
                             if (serverEquip[p].equipmentDTO.id === item.id && serverEquip[p].hours !== item.hours.toString()) {
                                 serverEquip[p].status = '2';
-                                serverEquip[p].hours = item.hours;
+                                serverEquip[p].hours = parseFloat(item.hours) + parseFloat(item.minutes / 60);
                                 break;
                             }
                             else if (serverEquip[p].equipmentDTO.id === item.id && serverEquip[p].hours === item.hours.toString()) {
@@ -204,7 +204,7 @@ class EquipmentList extends Component {
                                 },
                                 equipmentName: item.equipmentName,
                                 equipmentNumber: item.equipmentNumber,
-                                hours: item.hours,
+                                hours: parseFloat(item.hours) + parseFloat(item.minutes / 60),
                                 status: '7'
                             }
                             serverEquip.push(equipItem);

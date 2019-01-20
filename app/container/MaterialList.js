@@ -37,8 +37,8 @@ class MaterialList extends Component {
                     for (let k in array)
                         if (array[k].id === array2[i].id) {
                             array2[i].selected = true;
-                            array2[i].quantity = parseInt(array[k].quantity);
-                            array2[i].halfValue = parseInt(array[k].halfValue);
+                            array2[i].quantity = array[k].quantity;
+                            array2[i].halfValue = array[k].halfValue;
                         }
                 }
                 this.setState({
@@ -177,7 +177,7 @@ class MaterialList extends Component {
                         for (let p in serverMat) {
                             if (serverMat[p].materialDTO.id === item.id && serverMat[p].quantity !== item.quantity.toString()) {
                                 serverMat[p].status = '2';
-                                serverMat[p].quantity = item.quantity;
+                                serverMat[p].quantity = item.quantity + item.halfValue;
                                 break;
                             }
                             else if (serverMat[p].materialDTO.id === item.id && serverMat[p].quantity === item.quantity.toString()) {
@@ -206,7 +206,7 @@ class MaterialList extends Component {
                                 },
                                 materialName: item.materialName,
                                 measurement: item.measurement,
-                                quantity: item.quantity,
+                                quantity: item.quantity + item.halfValue,
                                 status: '7'
                             }
                             serverMat.push(matItem);

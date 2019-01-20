@@ -246,7 +246,7 @@ class LabourList extends Component {
                                             for (let p in serverLabor) {
                                                 if (serverLabor[p].workerDTO.id === item.id && serverLabor[p].hours !== item.hours.toString()) {
                                                     serverLabor[p].status = '2';
-                                                    serverLabor[p].hours = item.hours;
+                                                    serverLabor[p].hours = parseFloat(item.hours) + parseFloat(item.minutes / 60);
                                                     break;
                                                 }
                                                 else if (serverLabor[p].workerDTO.id === item.id && serverLabor[p].hours === item.hours.toString()) {
@@ -275,7 +275,7 @@ class LabourList extends Component {
                                                     },
                                                     firstName: item.firstName,
                                                     lastName: item.lastName,
-                                                    hours: item.hours,
+                                                    hours: parseFloat(item.hours) + parseFloat(item.minutes / 60),
                                                     status: '7',
                                                     skillDTO: {
                                                         skillName: item.skillDTO.skillName,
@@ -319,7 +319,7 @@ class LabourList extends Component {
                             for (let p in serverLabor) {
                                 if (serverLabor[p].workerDTO.id === item.id && serverLabor[p].hours !== item.hours.toString()) {
                                     serverLabor[p].status = '2';
-                                    serverLabor[p].hours = item.hours;
+                                    serverLabor[p].hours = parseFloat(item.hours) + parseFloat(item.minutes / 60);
                                     break;
                                 }
                                 else if (serverLabor[p].workerDTO.id === item.id && serverLabor[p].hours === item.hours.toString()) {
@@ -348,7 +348,7 @@ class LabourList extends Component {
                                     },
                                     firstName: item.firstName,
                                     lastName: item.lastName,
-                                    hours: item.hours,
+                                    hours: parseFloat(item.hours) + parseFloat(item.minutes / 60),
                                     status: '7',
                                     skillDTO: {
                                         skillName: item.skillDTO.skillName,

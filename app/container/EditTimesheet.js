@@ -414,10 +414,15 @@ class EditTimesheet extends Component {
     }
 
     renderLabourList = (labourList) => {
+        if (labourList.minutes === undefined) {
+            let getHours = Math.floor(labourList.hours);
+            labourList.minutes = (labourList.hours - getHours) * 60;
+            labourList.hours = getHours;
+        }
         return (
             <CardItem bordered>
                 <View style={{ flexDirection: 'row' }}>
-                    <View style={{ flex: 7 }}>
+                    <View style={{ flex: 2 }}>
                         <View style={{ flexDirection: 'row' }}>
                             <FastImage
                                 style={{
@@ -442,7 +447,7 @@ class EditTimesheet extends Component {
                         </View>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <Text style={{ fontSize: hp('2%') }}>{labourList.hours + ' Hrs'}</Text>
+                        <Text style={{ fontSize: hp('1.8%') }}>{labourList.hours + ' Hrs'} {labourList.minutes + ' Min'}</Text>
                     </View>
                 </View>
             </CardItem>
@@ -450,10 +455,15 @@ class EditTimesheet extends Component {
     }
 
     renderEquipList = (equipList) => {
+        if (equipList.minutes === undefined) {
+            let getHours = Math.floor(equipList.hours);
+            equipList.minutes = (equipList.hours - getHours) * 60;
+            equipList.hours = getHours;
+        }
         return (
             <CardItem bordered>
                 <View style={{ flexDirection: 'row' }}>
-                    <View style={{ flex: 7 }}>
+                    <View style={{ flex: 2 }}>
                         <View style={{ flexDirection: 'column' }}>
                             <Text style={{ fontSize: hp('2%') }}>{equipList.equipmentName + '   '}</Text>
                             <View style={{ padding: 2 }} />
@@ -461,7 +471,7 @@ class EditTimesheet extends Component {
                         </View>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <Text style={{ fontSize: hp('2%') }}>{equipList.hours + ' Hrs'}</Text>
+                        <Text style={{ fontSize: hp('1.8%') }}>{equipList.hours + ' Hrs'} {equipList.minutes + ' Min'}</Text>
                     </View>
                 </View>
             </CardItem>
@@ -469,16 +479,16 @@ class EditTimesheet extends Component {
     }
 
     renderMaterialList = (materialList) => {
-        let amount = parseInt(materialList.quantity) + parseInt(materialList.halfValue);
+        let amount = materialList.quantity + materialList.halfValue;
 
         return (
             <CardItem bordered>
                 <View style={{ flexDirection: 'row' }}>
-                    <View style={{ flex: 4 }}>
+                    <View style={{ flex: 2 }}>
                         <Text style={{ fontSize: hp('2%') }}>{materialList.materialName + "   "}</Text>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <Text style={{ fontSize: hp('2%') }}>{amount} {materialList.measurement}</Text>
+                        <Text style={{ fontSize: hp('1.8%') }}>{amount} {materialList.measurement}</Text>
                     </View>
                 </View>
             </CardItem>
@@ -594,7 +604,7 @@ class EditTimesheet extends Component {
                     </View>
                 </Header>
 
-                <ScrollView bounces={false}>
+                <ScrollView>
                     <View>
                         <Card>
                             <CardItem header bordered>
