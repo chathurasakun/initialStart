@@ -124,10 +124,15 @@ class ViewTimesheetForm extends Component {
     }
 
     renderLabourList = (labourList) => {
+        if (labourList.minutes === undefined) {
+            let getHours = Math.floor(labourList.hours);
+            labourList.minutes = (labourList.hours - getHours) * 60;
+            labourList.hours = getHours;
+        }
         return (
             <CardItem bordered>
                 <View style={{ flexDirection: 'row' }}>
-                    <View style={{ flex: 7 }}>
+                    <View style={{ flex: 2 }}>
                         <View style={{ flexDirection: 'row' }}>
                             <FastImage
                                 style={{
@@ -152,7 +157,7 @@ class ViewTimesheetForm extends Component {
                         </View>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <Text style={{ fontSize: hp('2%') }}>{labourList.hours + " Hrs"}</Text>
+                        <Text style={{ fontSize: hp('1.8%') }}>{labourList.hours + " Hrs"} {labourList.minutes + ' Min'}</Text>
                     </View>
                 </View>
             </CardItem>
@@ -160,10 +165,15 @@ class ViewTimesheetForm extends Component {
     }
 
     renderEquipList = (equipList) => {
+        if (equipList.minutes === undefined) {
+            let getHours = Math.floor(equipList.hours);
+            equipList.minutes = (equipList.hours - getHours) * 60;
+            equipList.hours = getHours;
+        }
         return (
             <CardItem bordered>
                 <View style={{ flexDirection: 'row' }}>
-                    <View style={{ flex: 7 }}>
+                    <View style={{ flex: 2 }}>
                         <View style={{ flexDirection: 'column' }}>
                             <Text style={{ fontSize: hp('2%') }}>{equipList.equipmentDTO.equipmentName + "   "}</Text>
                             <View style={{ padding: 2 }} />
@@ -171,7 +181,7 @@ class ViewTimesheetForm extends Component {
                         </View>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <Text style={{ fontSize: hp('2%') }}>{equipList.hours + " Hrs"}</Text>
+                        <Text style={{ fontSize: hp('1.8%') }}>{equipList.hours + ' Hrs'} {equipList.minutes + ' Min'}</Text>
                     </View>
                 </View>
             </CardItem>
@@ -182,11 +192,11 @@ class ViewTimesheetForm extends Component {
         return (
             <CardItem bordered>
                 <View style={{ flexDirection: 'row' }}>
-                    <View style={{ flex: 4 }}>
+                    <View style={{ flex: 2 }}>
                         <Text style={{ fontSize: hp('2%') }}>{materialList.materialDTO.materialName + "   "}</Text>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <Text style={{ fontSize: hp('2%') }}>{materialList.quantity + " " + materialList.materialDTO.measurement}</Text>
+                        <Text style={{ fontSize: hp('1.8%') }}>{materialList.quantity + " " + materialList.materialDTO.measurement}</Text>
                     </View>
                 </View>
             </CardItem>
@@ -510,7 +520,7 @@ class ViewTimesheetForm extends Component {
                     </View>
                 </Header>
 
-                <ScrollView bounces={false}>
+                <ScrollView>
                     {(this.state.isFetchingTimesheetDetails === false) ?
                         <View>
                             <Card>
