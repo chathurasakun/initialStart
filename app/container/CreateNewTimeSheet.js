@@ -16,7 +16,7 @@ class CreateNewTimeSheet extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            timesheetDate: new Date(),
+            timesheetDate: this.dateMethod(),
             timesheetShift: '',
             approver: [],
             labourList: [],
@@ -24,6 +24,13 @@ class CreateNewTimeSheet extends Component {
             matList: [],
             expenseList: []
         }
+    }
+
+    dateMethod = () => {
+        let currentYear = new Date().getFullYear();
+        let currentMonth = new Date().getMonth();
+        let currentDate = new Date().getDate();
+        return current = `${currentYear}-${currentMonth + 1}-${currentDate}`;
     }
 
     componentWillMount = () => {
@@ -131,7 +138,7 @@ class CreateNewTimeSheet extends Component {
                     purchaseOrderDTO: {
                         id: `${this.props.value.id}`
                     },
-                    timesheetDate: `${new Date(`${this.state.timesheetDate}`).getTime()}`,
+                    timesheetDate: `${this.convertToUTC(this.state.timesheetDate)}`,
                     timesheetShift: this.state.timesheetShift,
                     approverDTO: {
                         id: `${this.state.approver.id}`
@@ -153,6 +160,13 @@ class CreateNewTimeSheet extends Component {
                 );
             }
         });
+    }
+
+    convertToUTC = (timesheetDate) => {
+        let year = parseInt(timesheetDate.split('-')[0]);
+        let month = parseInt(timesheetDate.split('-')[1]);
+        let date = parseInt(timesheetDate.split('-')[2]);
+        return Date.UTC(year, month - 1, date);
     }
 
     componentWillUnmount = () => {

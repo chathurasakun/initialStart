@@ -309,7 +309,7 @@ class EditTimesheet extends Component {
             //console.log(timeSheetExpensesDTOs);
 
             const data = {
-                timesheetDate: `${new Date(`${this.state.timesheetdate}`).getTime()}`,
+                timesheetDate: `${this.convertToUTC(this.state.timesheetdate)}`,
                 timesheetShift: this.state.shiftCategory,
                 status: '2',
                 id: this.props.parentObject.state.timesheetId,
@@ -335,6 +335,13 @@ class EditTimesheet extends Component {
                 { cancelable: false }
             );
         }
+    }
+
+    convertToUTC = (timesheetDate) => {
+        let year = parseInt(timesheetDate.split('-')[0]);
+        let month = parseInt(timesheetDate.split('-')[1]);
+        let date = parseInt(timesheetDate.split('-')[2]);
+        return Date.UTC(year, month - 1, date);
     }
 
     async sessionExpired() {
