@@ -359,62 +359,62 @@ class EquipmentList extends Component {
     }
 
     clearSelectedList = () => {
-        const stateQuipList = this.state.selectedItems.map((item) => {
-            item.selected = false;
-            item.hours = '';
-            item.minutes = '';
-            return item;
-        });
+        // const stateQuipList = this.state.selectedItems.map((item) => {
+        //     item.selected = false;
+        //     item.hours = '';
+        //     item.minutes = '';
+        //     return item;
+        // });
 
-        if (this.props.fromEditTimesheet) {
-            let serverEquip = this.props.navigation.state.params.parentComponent.state.fromServerEquip;
-            let serverEquipIds = this.props.navigation.state.params.parentComponent.state.equipIds;
+        // if (this.props.fromEditTimesheet) {
+        //     let serverEquip = this.props.navigation.state.params.parentComponent.state.fromServerEquip;
+        //     let serverEquipIds = this.props.navigation.state.params.parentComponent.state.equipIds;
 
-            for (let p in serverEquip) {
-                for (let q in serverEquipIds) {
-                    if (serverEquip[p].equipmentDTO.id === serverEquipIds[q]['id']) {
-                        serverEquip[p].status = '6';
-                        serverEquip[p].hours = serverEquipIds[q]['hours'];
-                    }
-                }
-            }
+        //     for (let p in serverEquip) {
+        //         for (let q in serverEquipIds) {
+        //             if (serverEquip[p].equipmentDTO.id === serverEquipIds[q]['id']) {
+        //                 serverEquip[p].status = '6';
+        //                 serverEquip[p].hours = serverEquipIds[q]['hours'];
+        //             }
+        //         }
+        //     }
 
-            serverEquip = serverEquip.filter((existItem) => existItem.status === '6');
+        //     serverEquip = serverEquip.filter((existItem) => existItem.status === '6');
 
-            this.setState({ selectedItems: stateQuipList }, () => {
-                Alert.alert(
-                    'Success',
-                    'Cleared all selected Equipments',
-                    [
-                        {
-                            text: 'OK', onPress: () => this.setState({ selectedItems: [] },
-                                () => this.props.navigation.state.params.parentComponent.setState({
-                                    equipmentArray: this.state.selectedItems,
-                                    fromServerEquip: serverEquip
-                                }), Actions.pop())
-                        }
-                    ],
-                    { cancelable: false }
-                );
-            });
-        }
-        else {
-            this.setState({ selectedItems: stateQuipList }, () => {
-                Alert.alert(
-                    'Success',
-                    'Cleared all selected Equipments',
-                    [
-                        {
-                            text: 'OK', onPress: () => this.setState({ selectedItems: [] },
-                                () => this.props.parentComponent3.setState({
-                                    selectedValues: this.state.selectedItems
-                                }, () => EventRegister.emit('myCustomEvent2', this.state.selectedItems), Actions.pop()))
-                        }
-                    ],
-                    { cancelable: false }
-                );
-            });
-        }
+        //     this.setState({ selectedItems: stateQuipList }, () => {
+        //         Alert.alert(
+        //             'Success',
+        //             'Cleared all selected Equipments',
+        //             [
+        //                 {
+        //                     text: 'OK', onPress: () => this.setState({ selectedItems: [] },
+        //                         () => this.props.navigation.state.params.parentComponent.setState({
+        //                             equipmentArray: this.state.selectedItems,
+        //                             fromServerEquip: serverEquip
+        //                         }), Actions.pop())
+        //                 }
+        //             ],
+        //             { cancelable: false }
+        //         );
+        //     });
+        // }
+        // else {
+        //     this.setState({ selectedItems: stateQuipList }, () => {
+        //         Alert.alert(
+        //             'Success',
+        //             'Cleared all selected Equipments',
+        //             [
+        //                 {
+        //                     text: 'OK', onPress: () => this.setState({ selectedItems: [] },
+        //                         () => this.props.parentComponent3.setState({
+        //                             selectedValues: this.state.selectedItems
+        //                         }, () => EventRegister.emit('myCustomEvent2', this.state.selectedItems), Actions.pop()))
+        //                 }
+        //             ],
+        //             { cancelable: false }
+        //         );
+        //     });
+        // }
     }
 
     render = () => {

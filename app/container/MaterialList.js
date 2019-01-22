@@ -359,62 +359,62 @@ class MaterialList extends Component {
     }
 
     clearSelectedList = () => {
-        const stateQuipList = this.state.selectedItems.map((item) => {
-            item.selected = false;
-            item.quantity = '';
-            item.halfValue = '';
-            return item;
-        });
+        // const stateQuipList = this.state.selectedItems.map((item) => {
+        //     item.selected = false;
+        //     item.quantity = '';
+        //     item.halfValue = '';
+        //     return item;
+        // });
 
-        if (this.props.fromEditTimesheet) {
-            let serverMat = this.props.navigation.state.params.parentComponent.state.fromServerMaterial;
-            let serverMatIds = this.props.navigation.state.params.parentComponent.state.materialIds;
+        // if (this.props.fromEditTimesheet) {
+        //     let serverMat = this.props.navigation.state.params.parentComponent.state.fromServerMaterial;
+        //     let serverMatIds = this.props.navigation.state.params.parentComponent.state.materialIds;
 
-            for (let p in serverMat) {
-                for (let q in serverMatIds) {
-                    if (serverMat[p].materialDTO.id === serverMatIds[q]['id']) {
-                        serverMat[p].status = '6';
-                        serverMat[p].quantity = serverMatIds[q]['quantity'];
-                    }
-                }
-            }
+        //     for (let p in serverMat) {
+        //         for (let q in serverMatIds) {
+        //             if (serverMat[p].materialDTO.id === serverMatIds[q]['id']) {
+        //                 serverMat[p].status = '6';
+        //                 serverMat[p].quantity = serverMatIds[q]['quantity'];
+        //             }
+        //         }
+        //     }
 
-            serverMat = serverMat.filter((existItem) => existItem.status === '6');
+        //     serverMat = serverMat.filter((existItem) => existItem.status === '6');
 
-            this.setState({ selectedItems: stateQuipList }, () => {
-                Alert.alert(
-                    'Success',
-                    'Cleared all selected Materials',
-                    [
-                        {
-                            text: 'OK', onPress: () => this.setState({ selectedItems: [] },
-                                () => this.props.navigation.state.params.parentComponent.setState({
-                                    materialArray: this.state.selectedItems,
-                                    fromServerMaterial: serverMat
-                                }), Actions.pop())
-                        }
-                    ],
-                    { cancelable: false }
-                );
-            });
-        }
-        else {
-            this.setState({ selectedItems: stateQuipList }, () => {
-                Alert.alert(
-                    'Success',
-                    'Cleared all selected Materials',
-                    [
-                        {
-                            text: 'OK', onPress: () => this.setState({ selectedItems: [] },
-                                () => this.props.parentComponent4.setState({
-                                    selectedValues: this.state.selectedItems
-                                }, () => EventRegister.emit('myCustomEvent3', this.state.selectedItems), Actions.pop()))
-                        }
-                    ],
-                    { cancelable: false }
-                );
-            });
-        }
+        //     this.setState({ selectedItems: stateQuipList }, () => {
+        //         Alert.alert(
+        //             'Success',
+        //             'Cleared all selected Materials',
+        //             [
+        //                 {
+        //                     text: 'OK', onPress: () => this.setState({ selectedItems: [] },
+        //                         () => this.props.navigation.state.params.parentComponent.setState({
+        //                             materialArray: this.state.selectedItems,
+        //                             fromServerMaterial: serverMat
+        //                         }), Actions.pop())
+        //                 }
+        //             ],
+        //             { cancelable: false }
+        //         );
+        //     });
+        // }
+        // else {
+        //     this.setState({ selectedItems: stateQuipList }, () => {
+        //         Alert.alert(
+        //             'Success',
+        //             'Cleared all selected Materials',
+        //             [
+        //                 {
+        //                     text: 'OK', onPress: () => this.setState({ selectedItems: [] },
+        //                         () => this.props.parentComponent4.setState({
+        //                             selectedValues: this.state.selectedItems
+        //                         }, () => EventRegister.emit('myCustomEvent3', this.state.selectedItems), Actions.pop()))
+        //                 }
+        //             ],
+        //             { cancelable: false }
+        //         );
+        //     });
+        // }
     }
 
     render = () => {

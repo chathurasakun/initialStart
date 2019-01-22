@@ -206,44 +206,44 @@ class ApproverList extends Component {
     }
 
     clearSelectedList = () => {
-        if (this.props.fromEditTimesheet) {
-            this.setState({ selectedItem: [] }, () => {
-                Alert.alert(
-                    'Success',
-                    'Cleared selected Approver',
-                    [
-                        {
-                            text: 'OK', onPress: () => {
-                                this.setState(() => this.props.navigation.state.params.parentComponent.setState({
-                                    approverArray: this.state.selectedItem
-                                }));
-                                Actions.pop();
-                            }
-                        }
-                    ],
-                    { cancelable: false }
-                );
-            });
-        }
-        else {
-            this.setState({ selectedItem: [] }, () => {
-                Alert.alert(
-                    'Success',
-                    'Cleared selected Approver',
-                    [
-                        {
-                            text: 'OK', onPress: () => {
-                                this.setState(() => this.props.parentComponent.setState({
-                                    approver: this.state.selectedItem
-                                }));
-                                Actions.pop();
-                            }
-                        }
-                    ],
-                    { cancelable: false }
-                );
-            });
-        }
+        // if (this.props.fromEditTimesheet) {
+        //     this.setState({ selectedItem: [] }, () => {
+        //         Alert.alert(
+        //             'Success',
+        //             'Cleared selected Approver',
+        //             [
+        //                 {
+        //                     text: 'OK', onPress: () => {
+        //                         this.setState(() => this.props.navigation.state.params.parentComponent.setState({
+        //                             approverArray: this.state.selectedItem
+        //                         }));
+        //                         Actions.pop();
+        //                     }
+        //                 }
+        //             ],
+        //             { cancelable: false }
+        //         );
+        //     });
+        // }
+        // else {
+        //     this.setState({ selectedItem: [] }, () => {
+        //         Alert.alert(
+        //             'Success',
+        //             'Cleared selected Approver',
+        //             [
+        //                 {
+        //                     text: 'OK', onPress: () => {
+        //                         this.setState(() => this.props.parentComponent.setState({
+        //                             approver: this.state.selectedItem
+        //                         }));
+        //                         Actions.pop();
+        //                     }
+        //                 }
+        //             ],
+        //             { cancelable: false }
+        //         );
+        //     });
+        // }
     }
 
     render = () => {

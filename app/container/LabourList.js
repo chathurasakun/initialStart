@@ -548,66 +548,66 @@ class LabourList extends Component {
     }
 
     clearSelectedList = () => {
-        const stateQuipList = this.state.selectedItems.map((item) => {
-            item.selected = false;
-            item.hours = '';
-            item.minutes = '';
-            return item;
-        });
+        // const stateQuipList = this.state.selectedItems.map((item) => {
+        //     item.selected = false;
+        //     item.hours = '';
+        //     item.minutes = '';
+        //     return item;
+        // });
 
-        if (this.props.fromEditTimesheet) {
-            let serverLabor = this.props.navigation.state.params.parentComponent.state.fromServerLabor;
-            let serverLaborIds = this.props.navigation.state.params.parentComponent.state.laborIds;
+        // if (this.props.fromEditTimesheet) {
+        //     let serverLabor = this.props.navigation.state.params.parentComponent.state.fromServerLabor;
+        //     let serverLaborIds = this.props.navigation.state.params.parentComponent.state.laborIds;
 
-            for (let p in serverLabor) {
-                for (let q in serverLaborIds) {
-                    if (serverLabor[p].workerDTO.id === serverLaborIds[q]['id']) {
-                        serverLabor[p].status = '6';
-                        serverLabor[p].hours = serverLaborIds[q]['hours'];
-                    }
-                }
-            }
+        //     for (let p in serverLabor) {
+        //         for (let q in serverLaborIds) {
+        //             if (serverLabor[p].workerDTO.id === serverLaborIds[q]['id']) {
+        //                 serverLabor[p].status = '6';
+        //                 serverLabor[p].hours = serverLaborIds[q]['hours'];
+        //             }
+        //         }
+        //     }
 
-            serverLabor = serverLabor.filter((existItem) => existItem.status === '6');
+        //     serverLabor = serverLabor.filter((existItem) => existItem.status === '6');
 
-            this.setState({ selectedItems: stateQuipList }, () => {
-                Alert.alert(
-                    'Success',
-                    'Cleared all selected Labours',
-                    [
-                        {
-                            text: 'OK', onPress: () => {
-                                this.setState({ selectedItems: [] }, () => this.props.navigation.state.params.parentComponent.setState({
-                                    laborArray: this.state.selectedItems,
-                                    fromServerLabor: serverLabor
-                                }));
-                                Actions.pop();
-                            }
-                        }
-                    ],
-                    { cancelable: false }
-                );
-            });
-        }
-        else {
-            this.setState({ selectedItems: stateQuipList }, () => {
-                Alert.alert(
-                    'Success',
-                    'Cleared all selected Labours',
-                    [
-                        {
-                            text: 'OK', onPress: () => {
-                                this.setState({ selectedItems: [] }, () => this.props.parentComponent.setState({
-                                    selectedValues: this.state.selectedItems
-                                }, () => EventRegister.emit('myCustomEvent1', this.state.selectedItems)));
-                                Actions.pop();
-                            }
-                        }
-                    ],
-                    { cancelable: false }
-                );
-            });
-        }
+        //     this.setState({ selectedItems: stateQuipList }, () => {
+        //         Alert.alert(
+        //             'Success',
+        //             'Cleared all selected Labours',
+        //             [
+        //                 {
+        //                     text: 'OK', onPress: () => {
+        //                         this.setState({ selectedItems: [] }, () => this.props.navigation.state.params.parentComponent.setState({
+        //                             laborArray: this.state.selectedItems,
+        //                             fromServerLabor: serverLabor
+        //                         }));
+        //                         Actions.pop();
+        //                     }
+        //                 }
+        //             ],
+        //             { cancelable: false }
+        //         );
+        //     });
+        // }
+        // else {
+        //     this.setState({ selectedItems: stateQuipList }, () => {
+        //         Alert.alert(
+        //             'Success',
+        //             'Cleared all selected Labours',
+        //             [
+        //                 {
+        //                     text: 'OK', onPress: () => {
+        //                         this.setState({ selectedItems: [] }, () => this.props.parentComponent.setState({
+        //                             selectedValues: this.state.selectedItems
+        //                         }, () => EventRegister.emit('myCustomEvent1', this.state.selectedItems)));
+        //                         Actions.pop();
+        //                     }
+        //                 }
+        //             ],
+        //             { cancelable: false }
+        //         );
+        //     });
+        // }
     }
 
     handlePress = (buttonIndex) => {
