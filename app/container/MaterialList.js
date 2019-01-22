@@ -37,8 +37,8 @@ class MaterialList extends Component {
                     for (let k in array)
                         if (array[k].id === array2[i].id) {
                             array2[i].selected = true;
-                            array2[i].quantity = array[k].quantity;
-                            array2[i].halfValue = array[k].halfValue;
+                            array2[i].quantity = parseFloat(array[k].quantity);
+                            array2[i].halfValue = parseFloat(array[k].halfValue);
                         }
                 }
                 this.setState({

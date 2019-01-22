@@ -96,7 +96,7 @@ class Expenses_2 extends Component {
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <Left>
                             <Button transparent onPress={() => { Actions.pop() }}>
-                                <Icons name='left' style={{ fontSize: hp('2%'), color: '#FFFFFF' }} />
+                                <Icons name='left' style={{ fontSize: hp('3%'), color: '#FFFFFF' }} />
                             </Button>
                         </Left>
                         <View style={{ alignItems: 'center' }}>

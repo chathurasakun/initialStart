@@ -486,7 +486,7 @@ class EditTimesheet extends Component {
     }
 
     renderMaterialList = (materialList) => {
-        let amount = materialList.quantity + materialList.halfValue;
+        let amount = parseFloat(materialList.quantity) + parseFloat(materialList.halfValue);
 
         return (
             <CardItem bordered>

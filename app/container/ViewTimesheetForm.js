@@ -124,10 +124,10 @@ class ViewTimesheetForm extends Component {
     }
 
     renderLabourList = (labourList) => {
+        let getHours, minutes;
         if (labourList.minutes === undefined) {
-            let getHours = Math.floor(labourList.hours);
-            labourList.minutes = (labourList.hours - getHours) * 60;
-            labourList.hours = getHours;
+            getHours = Math.floor(labourList.hours);
+            minutes = (labourList.hours - getHours) * 60;
         }
         return (
             <CardItem bordered>
@@ -157,7 +157,7 @@ class ViewTimesheetForm extends Component {
                         </View>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <Text style={{ fontSize: hp('1.8%') }}>{labourList.hours + " Hrs"} {labourList.minutes + ' Min'}</Text>
+                        <Text style={{ fontSize: hp('1.8%') }}>{getHours + " Hrs"} {minutes + ' Min'}</Text>
                     </View>
                 </View>
             </CardItem>
@@ -165,10 +165,10 @@ class ViewTimesheetForm extends Component {
     }
 
     renderEquipList = (equipList) => {
+        let getHours, minutes;
         if (equipList.minutes === undefined) {
-            let getHours = Math.floor(equipList.hours);
-            equipList.minutes = (equipList.hours - getHours) * 60;
-            equipList.hours = getHours;
+            getHours = Math.floor(equipList.hours);
+            minutes = (equipList.hours - getHours) * 60;
         }
         return (
             <CardItem bordered>
@@ -181,7 +181,7 @@ class ViewTimesheetForm extends Component {
                         </View>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <Text style={{ fontSize: hp('1.8%') }}>{equipList.hours + ' Hrs'} {equipList.minutes + ' Min'}</Text>
+                        <Text style={{ fontSize: hp('1.8%') }}>{getHours + ' Hrs'} {minutes + ' Min'}</Text>
                     </View>
                 </View>
             </CardItem>

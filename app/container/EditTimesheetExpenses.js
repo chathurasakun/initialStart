@@ -131,7 +131,7 @@ class EditTimesheetExpenses extends Component {
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <Left>
                             <Button transparent onPress={() => { Actions.pop() }}>
-                                <Icons name='left' style={{ color: '#FFFFFF', fontSize: hp('2%') }} />
+                                <Icons name='left' style={{ color: '#FFFFFF', fontSize: hp('3%') }} />
                             </Button>
                         </Left>
                         <View style={{ alignItems: 'center' }}>
