@@ -378,7 +378,7 @@ class EditTimesheet extends Component {
                             }, () => {
                                 Alert.alert(
                                     'Successful!',
-                                    'New Timesheet updated successfully!',
+                                    'Timesheet updated successfully and submitted for approval!',
                                     [{ text: 'OK', onPress: () => { Actions.dashboard() } }],
                                     { cancelable: false }
                                 );
@@ -510,7 +510,21 @@ class EditTimesheet extends Component {
                 <Body>
                     {expenseImageArray.map(item => {
                         return (
-                            <View>
+                            <View
+                                style={{
+                                    backgroundColor: '#d9d9d9',
+                                    shadowColor: "#000000",
+                                    shadowOpacity: 0.8,
+                                    shadowRadius: 2,
+                                    shadowOffset: {
+                                        height: 1,
+                                        width: 1
+                                    },
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    marginBottom: hp('1%')
+                                }}
+                            >
                                 <FastImage
                                     style={{
                                         width: this.getUploadImageSreenWidthHeight().width,
@@ -518,11 +532,9 @@ class EditTimesheet extends Component {
                                     }}
                                     source={{ uri: item.image }}
                                 />
-                                <View style={{ padding: 2 }} />
                             </View>
                         )
                     })}
-                    <View style={{ padding: 1 }} />
                     <View style={{ flexDirection: 'row' }}>
                         <Left>
                             <Text style={{ fontSize: hp('2%') }}>

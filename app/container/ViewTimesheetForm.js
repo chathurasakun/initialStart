@@ -5,6 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import Icons from 'react-native-vector-icons/AntDesign';
 import baseUrl from '../config/baseUrl';
 import FastImage from 'react-native-fast-image';
+import Metrics from '../utils/matrics';
 import { connect } from 'react-redux';
 import Dialog, { DialogTitle, DialogContent, SlideAnimation } from 'react-native-popup-dialog';
 import t from 'tcomb-form-native';
@@ -123,6 +124,13 @@ class ViewTimesheetForm extends Component {
         return expense;
     }
 
+    getUploadImageSreenWidthHeight = () => {
+        const screenWidth = Metrics.screenWidth;
+        const imageWidth = (screenWidth) - 32;
+        const imageHeight = (screenWidth) - 96;
+        return { width: imageWidth, height: imageHeight };
+    }
+
     renderLabourList = (labourList) => {
         let getHours, minutes;
         if (labourList.minutes === undefined) {
@@ -211,19 +219,31 @@ class ViewTimesheetForm extends Component {
                 <Body>
                     {expenseImageArray.map(item => {
                         return (
-                            <View>
+                            <View
+                                style={{
+                                    backgroundColor: '#d9d9d9',
+                                    shadowColor: "#000000",
+                                    shadowOpacity: 0.8,
+                                    shadowRadius: 2,
+                                    shadowOffset: {
+                                        height: 1,
+                                        width: 1
+                                    },
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    marginBottom: hp('1%')
+                                }}
+                            >
                                 <FastImage
                                     style={{
-                                        width: wp('90%'),
-                                        height: hp('25%')
+                                        width: this.getUploadImageSreenWidthHeight().width,
+                                        height: this.getUploadImageSreenWidthHeight().height
                                     }}
                                     source={{ uri: item.image }}
                                 />
-                                <View style={{ padding: 2 }} />
                             </View>
                         )
                     })}
-                    <View style={{ padding: 1 }} />
                     <View style={{ flexDirection: 'row' }}>
                         <Left>
                             <Text style={{ fontSize: hp('2%') }}>
@@ -651,7 +671,7 @@ class ViewTimesheetForm extends Component {
                                 </CardItem>
                             </Card>
 
-                            {(this.state.userType === 'SUPERVISOR' && this.props.timesheetStatus === 5) ?
+                            {((this.state.userType === 'SUPERVISOR' || this.state.userType === 'APPROVER') && this.props.timesheetStatus === 5) ?
                                 <Card>
                                     <CardItem header bordered>
                                         <Text
@@ -748,7 +768,7 @@ class ViewTimesheetForm extends Component {
                         </View>
                     }
 
-                    {(this.state.userType !== 'SUPERVISOR' && this.state.isFetchingTimesheetDetails === false && this.props.status === 3) ?
+                    {(this.state.userType === 'APPROVER' && this.state.isFetchingTimesheetDetails === false && this.props.timesheetStatus === 3) ?
                         <View style={{ flexDirection: 'row', marginTop: hp('2%'), marginBottom: hp('2%') }}>
                             <Left>
                                 <Button

@@ -48,7 +48,7 @@ class ApprovedSheets extends Component {
         let getDayName = getDate.getDay();
 
         return (
-            <TouchableOpacity onPress={() => Actions.push('viewTimesheetForm', { timesheetId: item.id, status: item.status })}>
+            <TouchableOpacity onPress={() => Actions.push('viewTimesheetForm', { timesheetId: item.id, timesheetStatus: item.status })}>
                 <View
                     style={{
                         flexDirection: 'row',
