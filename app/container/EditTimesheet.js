@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, ActivityIndicator, View, ScrollView, FlatList, AsyncStorage, Alert, TouchableOpacity, ActionSheetIOS } from 'react-native';
+import { Text, ActivityIndicator, View, ScrollView, FlatList, AsyncStorage, Alert, TouchableOpacity, ActionSheetIOS, Image } from 'react-native';
 import { Header, Button, Container, Card, CardItem, Right, Left, Body } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Icons from 'react-native-vector-icons/AntDesign';
@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { removeUser } from '../redux/actions/operations';
 import { EventRegister } from 'react-native-event-listeners';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import ImageZoom from 'react-native-image-pan-zoom';
 
 class EditTimesheet extends Component {
 
@@ -525,13 +526,25 @@ class EditTimesheet extends Component {
                                     marginBottom: hp('1%')
                                 }}
                             >
-                                <FastImage
+                                {/* <FastImage
                                     style={{
                                         width: this.getUploadImageSreenWidthHeight().width,
                                         height: this.getUploadImageSreenWidthHeight().height
                                     }}
                                     source={{ uri: item.image }}
-                                />
+                                /> */}
+                                <ImageZoom
+                                    cropWidth={this.getUploadImageSreenWidthHeight().width}
+                                    cropHeight={this.getUploadImageSreenWidthHeight().height}
+                                    imageWidth={this.getUploadImageSreenWidthHeight().width}
+                                    imageHeight={this.getUploadImageSreenWidthHeight().height}>
+                                    <Image
+                                        style={{
+                                            width: this.getUploadImageSreenWidthHeight().width,
+                                            height: this.getUploadImageSreenWidthHeight().height
+                                        }}
+                                        source={{ uri: item.image }} />
+                                </ImageZoom>
                             </View>
                         )
                     })}
