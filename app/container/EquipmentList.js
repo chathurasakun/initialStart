@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Alert, TouchableOpacity, AsyncStorage, ActivityIndicator } from 'react-native';
-import { Container, Button, Icon, Right, Left, Header } from 'native-base'
+import { View, Text, ScrollView, Alert, TouchableOpacity, AsyncStorage, ActivityIndicator, TextInput } from 'react-native';
+import { Container, Button, Right, Left, Header } from 'native-base'
 import { EventRegister } from 'react-native-event-listeners';
 import Picker from 'react-native-picker';
-import SearchInput, { createFilter } from 'react-native-search-filter';
+import { createFilter } from 'react-native-search-filter';
 import baseUrl from '../config/baseUrl';
 import Icons from 'react-native-vector-icons/AntDesign';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { removeUser } from '../redux/actions/operations';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-const KEYS_TO_FILTERS = ['name', 'id', 'skill'];
+const KEYS_TO_FILTERS = ['equipmentName', 'equipmentNumber', 'id'];
 
 class EquipmentList extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -358,64 +357,64 @@ class EquipmentList extends Component {
         this.setState({ searchTerm: term })
     }
 
-    clearSelectedList = () => {
-        // const stateQuipList = this.state.selectedItems.map((item) => {
-        //     item.selected = false;
-        //     item.hours = '';
-        //     item.minutes = '';
-        //     return item;
-        // });
+    //clearSelectedList = () => {
+    // const stateQuipList = this.state.selectedItems.map((item) => {
+    //     item.selected = false;
+    //     item.hours = '';
+    //     item.minutes = '';
+    //     return item;
+    // });
 
-        // if (this.props.fromEditTimesheet) {
-        //     let serverEquip = this.props.navigation.state.params.parentComponent.state.fromServerEquip;
-        //     let serverEquipIds = this.props.navigation.state.params.parentComponent.state.equipIds;
+    // if (this.props.fromEditTimesheet) {
+    //     let serverEquip = this.props.navigation.state.params.parentComponent.state.fromServerEquip;
+    //     let serverEquipIds = this.props.navigation.state.params.parentComponent.state.equipIds;
 
-        //     for (let p in serverEquip) {
-        //         for (let q in serverEquipIds) {
-        //             if (serverEquip[p].equipmentDTO.id === serverEquipIds[q]['id']) {
-        //                 serverEquip[p].status = '6';
-        //                 serverEquip[p].hours = serverEquipIds[q]['hours'];
-        //             }
-        //         }
-        //     }
+    //     for (let p in serverEquip) {
+    //         for (let q in serverEquipIds) {
+    //             if (serverEquip[p].equipmentDTO.id === serverEquipIds[q]['id']) {
+    //                 serverEquip[p].status = '6';
+    //                 serverEquip[p].hours = serverEquipIds[q]['hours'];
+    //             }
+    //         }
+    //     }
 
-        //     serverEquip = serverEquip.filter((existItem) => existItem.status === '6');
+    //     serverEquip = serverEquip.filter((existItem) => existItem.status === '6');
 
-        //     this.setState({ selectedItems: stateQuipList }, () => {
-        //         Alert.alert(
-        //             'Success',
-        //             'Cleared all selected Equipments',
-        //             [
-        //                 {
-        //                     text: 'OK', onPress: () => this.setState({ selectedItems: [] },
-        //                         () => this.props.navigation.state.params.parentComponent.setState({
-        //                             equipmentArray: this.state.selectedItems,
-        //                             fromServerEquip: serverEquip
-        //                         }), Actions.pop())
-        //                 }
-        //             ],
-        //             { cancelable: false }
-        //         );
-        //     });
-        // }
-        // else {
-        //     this.setState({ selectedItems: stateQuipList }, () => {
-        //         Alert.alert(
-        //             'Success',
-        //             'Cleared all selected Equipments',
-        //             [
-        //                 {
-        //                     text: 'OK', onPress: () => this.setState({ selectedItems: [] },
-        //                         () => this.props.parentComponent3.setState({
-        //                             selectedValues: this.state.selectedItems
-        //                         }, () => EventRegister.emit('myCustomEvent2', this.state.selectedItems), Actions.pop()))
-        //                 }
-        //             ],
-        //             { cancelable: false }
-        //         );
-        //     });
-        // }
-    }
+    //     this.setState({ selectedItems: stateQuipList }, () => {
+    //         Alert.alert(
+    //             'Success',
+    //             'Cleared all selected Equipments',
+    //             [
+    //                 {
+    //                     text: 'OK', onPress: () => this.setState({ selectedItems: [] },
+    //                         () => this.props.navigation.state.params.parentComponent.setState({
+    //                             equipmentArray: this.state.selectedItems,
+    //                             fromServerEquip: serverEquip
+    //                         }), Actions.pop())
+    //                 }
+    //             ],
+    //             { cancelable: false }
+    //         );
+    //     });
+    // }
+    // else {
+    //     this.setState({ selectedItems: stateQuipList }, () => {
+    //         Alert.alert(
+    //             'Success',
+    //             'Cleared all selected Equipments',
+    //             [
+    //                 {
+    //                     text: 'OK', onPress: () => this.setState({ selectedItems: [] },
+    //                         () => this.props.parentComponent3.setState({
+    //                             selectedValues: this.state.selectedItems
+    //                         }, () => EventRegister.emit('myCustomEvent2', this.state.selectedItems), Actions.pop()))
+    //                 }
+    //             ],
+    //             { cancelable: false }
+    //         );
+    //     });
+    // }
+    //}
 
     render = () => {
         const tmpArray = this.state.getEquipList;
@@ -438,7 +437,8 @@ class EquipmentList extends Component {
                 </Header>
 
                 <View style={{ flexDirection: 'row' }}>
-                    <SearchInput
+                    <TextInput
+                        ref={input => { this.textInput = input }}
                         onChangeText={(term) => { this.searchUpdated(term) }}
                         style={{
                             borderColor: '#CCC',
@@ -463,7 +463,12 @@ class EquipmentList extends Component {
                             marginRight: wp('1%'),
                             marginTop: hp('1%')
                         }}
-                        onPress={() => this.clearSelectedList()}
+                        onPress={() => {
+                            this.textInput.clear();
+                            this.setState({
+                                searchTerm: ''
+                            });
+                        }}
                     >
                         <Text
                             style={{

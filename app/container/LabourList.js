@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Alert, TouchableOpacity, AsyncStorage, ActivityIndicator } from 'react-native';
-import { Container, Button, Icon, Right, Left, Header } from 'native-base'
+import { View, Text, ScrollView, Alert, TouchableOpacity, AsyncStorage, ActivityIndicator, TextInput } from 'react-native';
+import { Container, Button, Right, Left, Header } from 'native-base'
 import { EventRegister } from 'react-native-event-listeners';
 import Picker from 'react-native-picker';
-import SearchInput, { createFilter } from 'react-native-search-filter';
+import { createFilter } from 'react-native-search-filter';
 import baseUrl from '../config/baseUrl';
 import Icons from 'react-native-vector-icons/AntDesign';
 import { Actions } from 'react-native-router-flux';
-import FastImage from 'react-native-fast-image';
 import { removeUser } from '../redux/actions/operations';
 import { connect } from 'react-redux';
 import ActionSheet from 'react-native-actionsheet';
@@ -21,7 +20,6 @@ const title = 'Select a skill';
 const message = 'Select a different skill type instead of default skill';
 
 class LabourList extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -547,68 +545,68 @@ class LabourList extends Component {
         this.setState({ searchTerm: term })
     }
 
-    clearSelectedList = () => {
-        // const stateQuipList = this.state.selectedItems.map((item) => {
-        //     item.selected = false;
-        //     item.hours = '';
-        //     item.minutes = '';
-        //     return item;
-        // });
+    //clearSelectedList = () => {
+    // const stateQuipList = this.state.selectedItems.map((item) => {
+    //     item.selected = false;
+    //     item.hours = '';
+    //     item.minutes = '';
+    //     return item;
+    // });
 
-        // if (this.props.fromEditTimesheet) {
-        //     let serverLabor = this.props.navigation.state.params.parentComponent.state.fromServerLabor;
-        //     let serverLaborIds = this.props.navigation.state.params.parentComponent.state.laborIds;
+    // if (this.props.fromEditTimesheet) {
+    //     let serverLabor = this.props.navigation.state.params.parentComponent.state.fromServerLabor;
+    //     let serverLaborIds = this.props.navigation.state.params.parentComponent.state.laborIds;
 
-        //     for (let p in serverLabor) {
-        //         for (let q in serverLaborIds) {
-        //             if (serverLabor[p].workerDTO.id === serverLaborIds[q]['id']) {
-        //                 serverLabor[p].status = '6';
-        //                 serverLabor[p].hours = serverLaborIds[q]['hours'];
-        //             }
-        //         }
-        //     }
+    //     for (let p in serverLabor) {
+    //         for (let q in serverLaborIds) {
+    //             if (serverLabor[p].workerDTO.id === serverLaborIds[q]['id']) {
+    //                 serverLabor[p].status = '6';
+    //                 serverLabor[p].hours = serverLaborIds[q]['hours'];
+    //             }
+    //         }
+    //     }
 
-        //     serverLabor = serverLabor.filter((existItem) => existItem.status === '6');
+    //     serverLabor = serverLabor.filter((existItem) => existItem.status === '6');
 
-        //     this.setState({ selectedItems: stateQuipList }, () => {
-        //         Alert.alert(
-        //             'Success',
-        //             'Cleared all selected Labours',
-        //             [
-        //                 {
-        //                     text: 'OK', onPress: () => {
-        //                         this.setState({ selectedItems: [] }, () => this.props.navigation.state.params.parentComponent.setState({
-        //                             laborArray: this.state.selectedItems,
-        //                             fromServerLabor: serverLabor
-        //                         }));
-        //                         Actions.pop();
-        //                     }
-        //                 }
-        //             ],
-        //             { cancelable: false }
-        //         );
-        //     });
-        // }
-        // else {
-        //     this.setState({ selectedItems: stateQuipList }, () => {
-        //         Alert.alert(
-        //             'Success',
-        //             'Cleared all selected Labours',
-        //             [
-        //                 {
-        //                     text: 'OK', onPress: () => {
-        //                         this.setState({ selectedItems: [] }, () => this.props.parentComponent.setState({
-        //                             selectedValues: this.state.selectedItems
-        //                         }, () => EventRegister.emit('myCustomEvent1', this.state.selectedItems)));
-        //                         Actions.pop();
-        //                     }
-        //                 }
-        //             ],
-        //             { cancelable: false }
-        //         );
-        //     });
-        // }
-    }
+    //     this.setState({ selectedItems: stateQuipList }, () => {
+    //         Alert.alert(
+    //             'Success',
+    //             'Cleared all selected Labours',
+    //             [
+    //                 {
+    //                     text: 'OK', onPress: () => {
+    //                         this.setState({ selectedItems: [] }, () => this.props.navigation.state.params.parentComponent.setState({
+    //                             laborArray: this.state.selectedItems,
+    //                             fromServerLabor: serverLabor
+    //                         }));
+    //                         Actions.pop();
+    //                     }
+    //                 }
+    //             ],
+    //             { cancelable: false }
+    //         );
+    //     });
+    // }
+    // else {
+    //     this.setState({ selectedItems: stateQuipList }, () => {
+    //         Alert.alert(
+    //             'Success',
+    //             'Cleared all selected Labours',
+    //             [
+    //                 {
+    //                     text: 'OK', onPress: () => {
+    //                         this.setState({ selectedItems: [] }, () => this.props.parentComponent.setState({
+    //                             selectedValues: this.state.selectedItems
+    //                         }, () => EventRegister.emit('myCustomEvent1', this.state.selectedItems)));
+    //                         Actions.pop();
+    //                     }
+    //                 }
+    //             ],
+    //             { cancelable: false }
+    //         );
+    //     });
+    // }
+    //}
 
     handlePress = (buttonIndex) => {
         let selectedLabor = this.state.selectedItems.slice();
@@ -680,7 +678,8 @@ class LabourList extends Component {
                 </Header>
 
                 <View style={{ flexDirection: 'row' }}>
-                    <SearchInput
+                    <TextInput
+                        ref={input => { this.textInput = input }}
                         onChangeText={(term) => { this.searchUpdated(term) }}
                         style={{
                             borderColor: '#CCC',
@@ -705,7 +704,12 @@ class LabourList extends Component {
                             marginRight: wp('1%'),
                             marginTop: hp('1%')
                         }}
-                        onPress={() => this.clearSelectedList()}
+                        onPress={() => {
+                            this.textInput.clear();
+                            this.setState({
+                                searchTerm: ''
+                            });
+                        }}
                     >
                         <Text
                             style={{

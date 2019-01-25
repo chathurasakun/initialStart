@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Alert, TouchableOpacity, ActivityIndicator, AsyncStorage } from 'react-native';
-import { Container, Button, Icon, Header, Left, Right } from 'native-base'
+import { View, Text, ScrollView, Alert, TouchableOpacity, ActivityIndicator, AsyncStorage, TextInput } from 'react-native';
+import { Container, Button, Header, Left, Right } from 'native-base'
 import { EventRegister } from 'react-native-event-listeners';
+import { createFilter } from 'react-native-search-filter';
 import Picker from 'react-native-picker';
 import Icons from 'react-native-vector-icons/AntDesign';
 import { Actions } from 'react-native-router-flux';
 import baseUrl from '../config/baseUrl';
 import { removeUser } from '../redux/actions/operations';
 import { connect } from 'react-redux';
-import SearchInput, { createFilter } from 'react-native-search-filter';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 const KEYS_TO_FILTERS = ['materialName', 'id'];
 
 class MaterialList extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -358,64 +357,64 @@ class MaterialList extends Component {
         this.setState({ searchTerm: term })
     }
 
-    clearSelectedList = () => {
-        // const stateQuipList = this.state.selectedItems.map((item) => {
-        //     item.selected = false;
-        //     item.quantity = '';
-        //     item.halfValue = '';
-        //     return item;
-        // });
+    //clearSelectedList = () => {
+    // const stateQuipList = this.state.selectedItems.map((item) => {
+    //     item.selected = false;
+    //     item.quantity = '';
+    //     item.halfValue = '';
+    //     return item;
+    // });
 
-        // if (this.props.fromEditTimesheet) {
-        //     let serverMat = this.props.navigation.state.params.parentComponent.state.fromServerMaterial;
-        //     let serverMatIds = this.props.navigation.state.params.parentComponent.state.materialIds;
+    // if (this.props.fromEditTimesheet) {
+    //     let serverMat = this.props.navigation.state.params.parentComponent.state.fromServerMaterial;
+    //     let serverMatIds = this.props.navigation.state.params.parentComponent.state.materialIds;
 
-        //     for (let p in serverMat) {
-        //         for (let q in serverMatIds) {
-        //             if (serverMat[p].materialDTO.id === serverMatIds[q]['id']) {
-        //                 serverMat[p].status = '6';
-        //                 serverMat[p].quantity = serverMatIds[q]['quantity'];
-        //             }
-        //         }
-        //     }
+    //     for (let p in serverMat) {
+    //         for (let q in serverMatIds) {
+    //             if (serverMat[p].materialDTO.id === serverMatIds[q]['id']) {
+    //                 serverMat[p].status = '6';
+    //                 serverMat[p].quantity = serverMatIds[q]['quantity'];
+    //             }
+    //         }
+    //     }
 
-        //     serverMat = serverMat.filter((existItem) => existItem.status === '6');
+    //     serverMat = serverMat.filter((existItem) => existItem.status === '6');
 
-        //     this.setState({ selectedItems: stateQuipList }, () => {
-        //         Alert.alert(
-        //             'Success',
-        //             'Cleared all selected Materials',
-        //             [
-        //                 {
-        //                     text: 'OK', onPress: () => this.setState({ selectedItems: [] },
-        //                         () => this.props.navigation.state.params.parentComponent.setState({
-        //                             materialArray: this.state.selectedItems,
-        //                             fromServerMaterial: serverMat
-        //                         }), Actions.pop())
-        //                 }
-        //             ],
-        //             { cancelable: false }
-        //         );
-        //     });
-        // }
-        // else {
-        //     this.setState({ selectedItems: stateQuipList }, () => {
-        //         Alert.alert(
-        //             'Success',
-        //             'Cleared all selected Materials',
-        //             [
-        //                 {
-        //                     text: 'OK', onPress: () => this.setState({ selectedItems: [] },
-        //                         () => this.props.parentComponent4.setState({
-        //                             selectedValues: this.state.selectedItems
-        //                         }, () => EventRegister.emit('myCustomEvent3', this.state.selectedItems), Actions.pop()))
-        //                 }
-        //             ],
-        //             { cancelable: false }
-        //         );
-        //     });
-        // }
-    }
+    //     this.setState({ selectedItems: stateQuipList }, () => {
+    //         Alert.alert(
+    //             'Success',
+    //             'Cleared all selected Materials',
+    //             [
+    //                 {
+    //                     text: 'OK', onPress: () => this.setState({ selectedItems: [] },
+    //                         () => this.props.navigation.state.params.parentComponent.setState({
+    //                             materialArray: this.state.selectedItems,
+    //                             fromServerMaterial: serverMat
+    //                         }), Actions.pop())
+    //                 }
+    //             ],
+    //             { cancelable: false }
+    //         );
+    //     });
+    // }
+    // else {
+    //     this.setState({ selectedItems: stateQuipList }, () => {
+    //         Alert.alert(
+    //             'Success',
+    //             'Cleared all selected Materials',
+    //             [
+    //                 {
+    //                     text: 'OK', onPress: () => this.setState({ selectedItems: [] },
+    //                         () => this.props.parentComponent4.setState({
+    //                             selectedValues: this.state.selectedItems
+    //                         }, () => EventRegister.emit('myCustomEvent3', this.state.selectedItems), Actions.pop()))
+    //                 }
+    //             ],
+    //             { cancelable: false }
+    //         );
+    //     });
+    // }
+    //}
 
     render = () => {
         const tmpArray = this.state.getMatList;
@@ -438,7 +437,8 @@ class MaterialList extends Component {
                 </Header>
 
                 <View style={{ flexDirection: 'row' }}>
-                    <SearchInput
+                    <TextInput
+                        ref={input => { this.textInput = input }}
                         onChangeText={(term) => { this.searchUpdated(term) }}
                         style={{
                             borderColor: '#CCC',
@@ -463,7 +463,12 @@ class MaterialList extends Component {
                             marginRight: wp('1%'),
                             marginTop: hp('1%')
                         }}
-                        onPress={() => this.clearSelectedList()}
+                        onPress={() => {
+                            this.textInput.clear();
+                            this.setState({
+                                searchTerm: ''
+                            });
+                        }}
                     >
                         <Text
                             style={{

@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Alert, AsyncStorage, ActivityIndicator } from 'react-native';
-import { Container, Header, Button, Icon, Left, Right } from 'native-base'
+import { View, Text, ScrollView, TouchableOpacity, Alert, AsyncStorage, ActivityIndicator, TextInput } from 'react-native';
+import { Container, Header, Button, Left, Right } from 'native-base'
 import Metrics from '../utils/matrics';
 import baseUrl from '../config/baseUrl';
+import { createFilter } from 'react-native-search-filter';
 import Icons from 'react-native-vector-icons/AntDesign';
 import { Actions } from 'react-native-router-flux';
-import SearchInput, { createFilter } from 'react-native-search-filter';
 import { removeUser } from '../redux/actions/operations';
 import { connect } from 'react-redux';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 const KEYS_TO_FILTERS = ['firstName', 'lastName', 'email', 'id'];
 
 class ApproverList extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -205,46 +204,46 @@ class ApproverList extends Component {
         this.setState({ searchTerm: term })
     }
 
-    clearSelectedList = () => {
-        // if (this.props.fromEditTimesheet) {
-        //     this.setState({ selectedItem: [] }, () => {
-        //         Alert.alert(
-        //             'Success',
-        //             'Cleared selected Approver',
-        //             [
-        //                 {
-        //                     text: 'OK', onPress: () => {
-        //                         this.setState(() => this.props.navigation.state.params.parentComponent.setState({
-        //                             approverArray: this.state.selectedItem
-        //                         }));
-        //                         Actions.pop();
-        //                     }
-        //                 }
-        //             ],
-        //             { cancelable: false }
-        //         );
-        //     });
-        // }
-        // else {
-        //     this.setState({ selectedItem: [] }, () => {
-        //         Alert.alert(
-        //             'Success',
-        //             'Cleared selected Approver',
-        //             [
-        //                 {
-        //                     text: 'OK', onPress: () => {
-        //                         this.setState(() => this.props.parentComponent.setState({
-        //                             approver: this.state.selectedItem
-        //                         }));
-        //                         Actions.pop();
-        //                     }
-        //                 }
-        //             ],
-        //             { cancelable: false }
-        //         );
-        //     });
-        // }
-    }
+    //clearSelectedList = () => {
+    // if (this.props.fromEditTimesheet) {
+    //     this.setState({ selectedItem: [] }, () => {
+    //         Alert.alert(
+    //             'Success',
+    //             'Cleared selected Approver',
+    //             [
+    //                 {
+    //                     text: 'OK', onPress: () => {
+    //                         this.setState(() => this.props.navigation.state.params.parentComponent.setState({
+    //                             approverArray: this.state.selectedItem
+    //                         }));
+    //                         Actions.pop();
+    //                     }
+    //                 }
+    //             ],
+    //             { cancelable: false }
+    //         );
+    //     });
+    // }
+    // else {
+    //     this.setState({ selectedItem: [] }, () => {
+    //         Alert.alert(
+    //             'Success',
+    //             'Cleared selected Approver',
+    //             [
+    //                 {
+    //                     text: 'OK', onPress: () => {
+    //                         this.setState(() => this.props.parentComponent.setState({
+    //                             approver: this.state.selectedItem
+    //                         }));
+    //                         Actions.pop();
+    //                     }
+    //                 }
+    //             ],
+    //             { cancelable: false }
+    //         );
+    //     });
+    // }
+    //}
 
     render = () => {
         const tmpArray = this.state.getList;
@@ -267,7 +266,8 @@ class ApproverList extends Component {
                 </Header>
 
                 <View style={{ flexDirection: 'row' }}>
-                    <SearchInput
+                    <TextInput
+                        ref={input => { this.textInput = input }}
                         onChangeText={(term) => { this.searchUpdated(term) }}
                         style={{
                             borderColor: '#CCC',
@@ -292,7 +292,12 @@ class ApproverList extends Component {
                             marginRight: wp('1%'),
                             marginTop: hp('1%')
                         }}
-                        onPress={() => this.clearSelectedList()}
+                        onPress={() => {
+                            this.textInput.clear();
+                            this.setState({
+                                searchTerm: ''
+                            });
+                        }}
                     >
                         <Text
                             style={{
