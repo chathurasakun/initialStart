@@ -9,7 +9,7 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "apple-icon-60x60.png",
+      "filename" : "60.png",
       "scale" : "3x"
     },
     {
@@ -135,7 +135,7 @@
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "apple-icon-152x152-6.png",
+      "filename" : "152.png",
       "scale" : "2x"
     },
     {
@@ -223,7 +223,7 @@
     {
       "size" : "108x108",
       "idiom" : "watch",
-      "filename" : "72-1.png",
+      "filename" : "216.png",
       "scale" : "2x",
       "role" : "quickLook",
       "subtype" : "44mm"
@@ -297,7 +297,7 @@
     {
       "size" : "44x44",
       "idiom" : "watch",
-      "filename" : "72-11.png",
+      "filename" : "80-3.png",
       "scale" : "2x",
       "role" : "longLook",
       "subtype" : "42mm"
@@ -305,14 +305,14 @@
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "256-2.png",
+      "filename" : "80-4.png",
       "unassigned" : true,
       "scale" : "1x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "1024.png",
+      "filename" : "87-3.png",
       "unassigned" : true,
       "scale" : "1x"
     }
