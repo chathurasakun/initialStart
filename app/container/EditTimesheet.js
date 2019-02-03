@@ -510,42 +510,34 @@ class EditTimesheet extends Component {
             <CardItem bordered>
                 <Body>
                     {expenseImageArray.map(item => {
+                        let picArray = [{ url: item.image }];
+
                         return (
-                            <View
-                                style={{
-                                    backgroundColor: '#d9d9d9',
-                                    shadowColor: "#000000",
-                                    shadowOpacity: 0.8,
-                                    shadowRadius: 2,
-                                    shadowOffset: {
-                                        height: 1,
-                                        width: 1
-                                    },
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    marginBottom: hp('1%')
-                                }}
-                            >
-                                <FastImage
+                            <TouchableOpacity onPress={() => Actions.push('zoomPic', { 'picArray': picArray })}>
+                                <View
                                     style={{
-                                        width: this.getUploadImageSreenWidthHeight().width,
-                                        height: this.getUploadImageSreenWidthHeight().height
+                                        backgroundColor: '#d9d9d9',
+                                        shadowColor: "#000000",
+                                        shadowOpacity: 0.8,
+                                        shadowRadius: 2,
+                                        shadowOffset: {
+                                            height: 1,
+                                            width: 1
+                                        },
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        marginBottom: hp('1%')
                                     }}
-                                    source={{ uri: item.image }}
-                                />
-                                {/* <ImageZoom
-                                    cropWidth={this.getUploadImageSreenWidthHeight().width}
-                                    cropHeight={this.getUploadImageSreenWidthHeight().height}
-                                    imageWidth={this.getUploadImageSreenWidthHeight().width}
-                                    imageHeight={this.getUploadImageSreenWidthHeight().height}>
-                                    <Image
+                                >
+                                    <FastImage
                                         style={{
                                             width: this.getUploadImageSreenWidthHeight().width,
                                             height: this.getUploadImageSreenWidthHeight().height
                                         }}
-                                        source={{ uri: item.image }} />
-                                </ImageZoom> */}
-                            </View>
+                                        source={{ uri: item.image }}
+                                    />
+                                </View>
+                            </TouchableOpacity>
                         )
                     })}
                     <View style={{ flexDirection: 'row' }}>

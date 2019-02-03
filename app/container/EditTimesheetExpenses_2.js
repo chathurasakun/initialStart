@@ -181,7 +181,7 @@ class EditTimesheetExpenses_2 extends Component {
                                                 amount: amount
                                             })}
                                             maxLength={7}
-                                            keyboardType='number-pad'
+                                            keyboardType='decimal-pad'
                                             value={this.state.amount}
                                             style={{ fontSize: hp('2%') }}
                                         />

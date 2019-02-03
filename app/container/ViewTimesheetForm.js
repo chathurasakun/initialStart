@@ -12,8 +12,8 @@ import t from 'tcomb-form-native';
 import { EventRegister } from 'react-native-event-listeners';
 import { removeUser } from '../redux/actions/operations';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import ImageZoom from 'react-native-image-pan-zoom';
-import ImageViewer from 'react-native-image-zoom-viewer';
+// import ImageZoom from 'react-native-image-pan-zoom';
+// import ImageViewer from 'react-native-image-zoom-viewer';
 
 class ViewTimesheetForm extends Component {
 
@@ -220,8 +220,10 @@ class ViewTimesheetForm extends Component {
             <CardItem bordered>
                 <Body>
                     {expenseImageArray.map(item => {
+                        let picArray = [{ url: item.image }];
+
                         return (
-                            <TouchableOpacity onPress={()=>Alert.alert('ok')}>
+                            <TouchableOpacity onPress={() => Actions.push('zoomPic', { 'picArray': picArray })}>
                                 <View
                                     style={{
                                         backgroundColor: '#d9d9d9',
@@ -244,22 +246,6 @@ class ViewTimesheetForm extends Component {
                                         }}
                                         source={{ uri: item.image }}
                                     />
-                                    {/* <ImageZoom
-                                    cropWidth={this.getUploadImageSreenWidthHeight().width}
-                                    cropHeight={this.getUploadImageSreenWidthHeight().height}
-                                    imageWidth={this.getUploadImageSreenWidthHeight().width}
-                                    imageHeight={this.getUploadImageSreenWidthHeight().height}>
-                                    <Image
-                                        style={{
-                                            width: this.getUploadImageSreenWidthHeight().width,
-                                            height: this.getUploadImageSreenWidthHeight().height
-                                        }}
-                                        source={{ uri: item.image }} />
-                                </ImageZoom> */}
-                                    {/* <Modal visible={true} transparent={true}>
-                                    <ImageViewer 
-                                    imageUrls={{ url: item.image }} />
-                                </Modal> */}
                                 </View>
                             </TouchableOpacity>
                         )

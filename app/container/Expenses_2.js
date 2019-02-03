@@ -142,7 +142,7 @@ class Expenses_2 extends Component {
                                                 amount: amount
                                             })}
                                             maxLength={7}
-                                            keyboardType='number-pad'
+                                            keyboardType='decimal-pad'
                                             style={{ fontSize: hp('2%') }}
                                         />
                                     </Item>

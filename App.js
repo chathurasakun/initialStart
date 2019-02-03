@@ -21,6 +21,7 @@ import EditTimesheetExpenses from './app/container/EditTimesheetExpenses';
 import EditTimesheetExpenses_2 from './app/container/EditTimesheetExpenses_2';
 import ViewTimesheetForm from './app/container/ViewTimesheetForm';
 import EditTimesheet from './app/container/EditTimesheet';
+import ZoomPic from './app/container/ZoomPic';
 import { Provider } from 'react-redux';
 import configureStore from './app/redux/store';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -145,6 +146,7 @@ export class App extends Component {
                 <Scene key='editTimesheetExpenses' component={EditTimesheetExpenses} type='replace' />
                 <Scene key='editTimesheetExpenses_2' component={EditTimesheetExpenses_2} type='replace' />
               </Scene>
+              <Scene key='zoomPic' component={ZoomPic} type='replace' />
             </Scene>
           </Scene>
         </Router>
