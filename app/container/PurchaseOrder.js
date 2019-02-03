@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Switch, ScrollView, Alert, AsyncStorage, ActivityIndicator } from 'react-native';
+import { Text, View, Switch, ScrollView, Alert, AsyncStorage, ActivityIndicator, TextInput } from 'react-native';
 import { Header, Button, Container, ListItem, Left, Right } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import baseUrl from '../config/baseUrl';
@@ -174,21 +174,52 @@ class PurchaseOrder extends Component {
                     </View>
                 </Header>
 
-                <SearchInput
-                    onChangeText={(term) => { this.searchUpdated(term) }}
-                    style={{
-                        borderColor: '#CCC',
-                        borderWidth: 1,
-                        width: wp('95%'),
-                        height: hp('6%'),
-                        marginLeft: wp('2.5%'),
-                        marginRight: wp('2.5%'),
-                        marginTop: hp('1%'),
-                        fontSize: hp('2.5%'),
-                        padding: hp('1%')
-                    }}
-                    placeholder="     Start typing to search.."
-                />
+                <View style={{ flexDirection: 'row' }}>
+                    <TextInput
+                        ref={input => { this.textInput = input }}
+                        onChangeText={(term) => { this.searchUpdated(term) }}
+                        style={{
+                            borderColor: '#CCC',
+                            borderWidth: 1,
+                            width: wp('85%'),
+                            height: hp('6%'),
+                            marginTop: hp('1%'),
+                            marginLeft: wp('1%'),
+                            padding: hp('1%'),
+                            fontSize: hp('2.5%')
+                        }}
+                        placeholder="     Start typing to search.."
+                    />
+                    <Button
+                        style={{
+                            width: wp('12%'),
+                            height: hp('6%'),
+                            backgroundColor: '#008b00',
+                            justifyContent: 'center',
+                            borderRadius: 8,
+                            marginLeft: wp('1%'),
+                            marginRight: wp('1%'),
+                            marginTop: hp('1%')
+                        }}
+                        onPress={() => {
+                            this.textInput.clear();
+                            this.setState({
+                                searchTerm: ''
+                            });
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: '#FFFFFF',
+                                fontSize: hp('2%'),
+                                fontWeight: 'normal',
+                                textAlign: 'center'
+                            }}
+                        >
+                            Clear
+                        </Text>
+                    </Button>
+                </View>
 
                 {/* <ListItem>
                     <View style={{ flexDirection: 'row' }}>

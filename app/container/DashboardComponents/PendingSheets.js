@@ -128,15 +128,38 @@ class PendingSheets extends Component {
     render = () => {
         return (
             <Container>
-                <FlatList
-                    data={this.state.pendingSheets}
-                    keyExtractor={(item, index) => item.id}
-                    renderItem={({ item }) => this.renderListItem(item)}
-                    scrollEnabled={false}
-                    ListFooterComponent={() => {
-                        return (<View style={{ borderBottomColor: 'grey', borderBottomWidth: 1 }} />)
-                    }}
-                />
+                {(this.state.pendingSheets.length > 0) ?
+                    <FlatList
+                        data={this.state.pendingSheets}
+                        keyExtractor={(item, index) => item.id}
+                        renderItem={({ item }) => this.renderListItem(item)}
+                        scrollEnabled={false}
+                        ListFooterComponent={() => {
+                            return (<View style={{ borderBottomColor: 'grey', borderBottomWidth: 1 }} />)
+                        }}
+                    />
+                    :
+                    <View
+                        style={{
+                            position: 'absolute',
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            bottom: 0,
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: '#9B9B9B',
+                                fontSize: hp('2.5%'),
+                            }}
+                        >
+                            No pending timesheets.
+                        </Text>
+                    </View>
+                }
             </Container>
         )
     }

@@ -29,7 +29,8 @@ class SideMenu extends Component {
     }
 
     dashboard = () => {
-        Actions.dashboard();
+        //Actions.dashboard();
+        Actions.drawerClose();
     }
 
     purchaseOrder = () => {

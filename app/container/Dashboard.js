@@ -264,15 +264,38 @@ class Dashboard extends Component {
                                     </View>
 
                                     <View style={[styles.listContainer]}>
-                                        <FlatList
-                                            data={this.state.supervisorTimesheet}
-                                            keyExtractor={(item, index) => item.id}
-                                            renderItem={({ item }) => this.renderListItem(item)}
-                                            scrollEnabled={false}
-                                            ListFooterComponent={() => {
-                                                return (<View style={{ borderTopColor: '#d1d2d4', borderTopWidth: 1 }} />)
-                                            }}
-                                        />
+                                        {(this.state.supervisorTimesheet.length > 0) ?
+                                            <FlatList
+                                                data={this.state.supervisorTimesheet}
+                                                keyExtractor={(item, index) => item.id}
+                                                renderItem={({ item }) => this.renderListItem(item)}
+                                                scrollEnabled={false}
+                                                ListFooterComponent={() => {
+                                                    return (<View style={{ borderTopColor: '#d1d2d4', borderTopWidth: 1 }} />)
+                                                }}
+                                            />
+                                            :
+                                            <View
+                                                style={{
+                                                    position: 'absolute',
+                                                    left: 0,
+                                                    right: 0,
+                                                    top: 0,
+                                                    bottom: 0,
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center'
+                                                }}
+                                            >
+                                                <Text
+                                                    style={{
+                                                        color: '#9B9B9B',
+                                                        fontSize: hp('2.5%'),
+                                                    }}
+                                                >
+                                                    No existing timesheets.
+                                                </Text>
+                                            </View>
+                                        }
                                     </View>
                                 </View>
                                 :
@@ -303,7 +326,7 @@ class Dashboard extends Component {
                                             textStyle={{ color: '#00af5f', fontSize: hp('2%') }}
                                             activeTextStyle={styles.activeTabHeadingText}
                                         >
-                                            <ApprovedSheets timesheet={this.state.approvedTimesheet} />
+                                            <ApprovedSheets timesheet={this.state.approvedTimesheet} approved={true} />
                                         </Tab>
 
                                         <Tab heading='REJECTED'
@@ -312,7 +335,7 @@ class Dashboard extends Component {
                                             textStyle={{ color: '#e85442', fontSize: hp('2%') }}
                                             activeTextStyle={styles.activeTabHeadingText}
                                         >
-                                            <ApprovedSheets timesheet={this.state.rejectedTimesheet} />
+                                            <ApprovedSheets timesheet={this.state.rejectedTimesheet} approved={false} />
                                         </Tab>
                                     </Tabs>
                                 </View>

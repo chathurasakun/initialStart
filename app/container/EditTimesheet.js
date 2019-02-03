@@ -526,14 +526,14 @@ class EditTimesheet extends Component {
                                     marginBottom: hp('1%')
                                 }}
                             >
-                                {/* <FastImage
+                                <FastImage
                                     style={{
                                         width: this.getUploadImageSreenWidthHeight().width,
                                         height: this.getUploadImageSreenWidthHeight().height
                                     }}
                                     source={{ uri: item.image }}
-                                /> */}
-                                <ImageZoom
+                                />
+                                {/* <ImageZoom
                                     cropWidth={this.getUploadImageSreenWidthHeight().width}
                                     cropHeight={this.getUploadImageSreenWidthHeight().height}
                                     imageWidth={this.getUploadImageSreenWidthHeight().width}
@@ -544,7 +544,7 @@ class EditTimesheet extends Component {
                                             height: this.getUploadImageSreenWidthHeight().height
                                         }}
                                         source={{ uri: item.image }} />
-                                </ImageZoom>
+                                </ImageZoom> */}
                             </View>
                         )
                     })}

@@ -463,6 +463,9 @@ class LabourList extends Component {
             Picker.show();
         }
         else {
+            if (Picker.isPickerShow)
+                Picker.hide();
+
             if (this.props.fromEditTimesheet) {
                 item.selected = false;
                 item.hours = '';
@@ -666,7 +669,12 @@ class LabourList extends Component {
                 <Header style={{ backgroundColor: '#3a5997', height: hp('10%') }}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <View style={{ flex: 0.1 }}>
-                            <Button transparent onPress={() => { Actions.pop() }}>
+                            <Button transparent onPress={() => {
+                                if (Picker.isPickerShow)
+                                    Picker.hide()
+                                Actions.pop()
+                            }}
+                            >
                                 <Icons name='left' style={{ fontSize: hp('3%'), color: '#FFFFFF', fontWeight: 'bold' }} />
                             </Button>
                         </View>
@@ -738,7 +746,7 @@ class LabourList extends Component {
                                                 <View
                                                     style={{
                                                         width: wp('100%'),
-                                                        height: hp('8%'),
+                                                        height: hp('9%'),
                                                         alignItems: 'center',
                                                         justifyContent: 'center',
                                                         borderColor: '#9B9B9B',

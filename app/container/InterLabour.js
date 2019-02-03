@@ -48,7 +48,7 @@ class InterLabour extends Component {
                 <View
                     style={{
                         width: wp('100%'),
-                        height: hp('8%'),
+                        height: hp('9%'),
                         alignItems: 'center',
                         justifyContent: 'center',
                         borderColor: '#9B9B9B',

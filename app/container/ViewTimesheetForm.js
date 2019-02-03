@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, ActivityIndicator, View, ScrollView, FlatList, AsyncStorage, Alert, Dimensions, Image, Modal } from 'react-native';
+import { Text, ActivityIndicator, View, ScrollView, FlatList, AsyncStorage, Alert, Dimensions, Image, Modal, TouchableOpacity } from 'react-native';
 import { Header, Button, Container, Card, CardItem, Right, Left, Body } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Icons from 'react-native-vector-icons/AntDesign';
@@ -221,29 +221,30 @@ class ViewTimesheetForm extends Component {
                 <Body>
                     {expenseImageArray.map(item => {
                         return (
-                            <View
-                                style={{
-                                    backgroundColor: '#d9d9d9',
-                                    shadowColor: "#000000",
-                                    shadowOpacity: 0.8,
-                                    shadowRadius: 2,
-                                    shadowOffset: {
-                                        height: 1,
-                                        width: 1
-                                    },
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    marginBottom: hp('1%')
-                                }}
-                            >
-                                {/* <FastImage
+                            <TouchableOpacity onPress={()=>Alert.alert('ok')}>
+                                <View
                                     style={{
-                                        width: this.getUploadImageSreenWidthHeight().width,
-                                        height: this.getUploadImageSreenWidthHeight().height
+                                        backgroundColor: '#d9d9d9',
+                                        shadowColor: "#000000",
+                                        shadowOpacity: 0.8,
+                                        shadowRadius: 2,
+                                        shadowOffset: {
+                                            height: 1,
+                                            width: 1
+                                        },
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        marginBottom: hp('1%')
                                     }}
-                                    source={{ uri: item.image }}
-                                /> */}
-                                <ImageZoom
+                                >
+                                    <FastImage
+                                        style={{
+                                            width: this.getUploadImageSreenWidthHeight().width,
+                                            height: this.getUploadImageSreenWidthHeight().height
+                                        }}
+                                        source={{ uri: item.image }}
+                                    />
+                                    {/* <ImageZoom
                                     cropWidth={this.getUploadImageSreenWidthHeight().width}
                                     cropHeight={this.getUploadImageSreenWidthHeight().height}
                                     imageWidth={this.getUploadImageSreenWidthHeight().width}
@@ -254,11 +255,13 @@ class ViewTimesheetForm extends Component {
                                             height: this.getUploadImageSreenWidthHeight().height
                                         }}
                                         source={{ uri: item.image }} />
-                                </ImageZoom>
-                                {/* <Modal visible={true} transparent={true}>
-                                    <ImageViewer imageUrls={{ url: item.image }} />
+                                </ImageZoom> */}
+                                    {/* <Modal visible={true} transparent={true}>
+                                    <ImageViewer 
+                                    imageUrls={{ url: item.image }} />
                                 </Modal> */}
-                            </View>
+                                </View>
+                            </TouchableOpacity>
                         )
                     })}
                     <View style={{ flexDirection: 'row' }}>
@@ -424,7 +427,10 @@ class ViewTimesheetForm extends Component {
                     .then((responseJson) => {
                         if (responseJson.resultStatus === 'SUCCESSFUL') {
                             EventRegister.emit('reloadDashboard', 'reloadData');
-                            this.setState({ isLoading: false }, () => {
+                            this.setState({
+                                isLoading: false,
+                                visible: false
+                            }, () => {
                                 Alert.alert(
                                     '',
                                     'Timesheet rejected!',
@@ -440,7 +446,10 @@ class ViewTimesheetForm extends Component {
                         }
                         else {
                             if (responseJson.httpStatus === 'UNAUTHORIZED') {
-                                this.setState({ isLoading: false }, () => {
+                                this.setState({
+                                    isLoading: false,
+                                    visible: false
+                                }, () => {
                                     Alert.alert(
                                         'Session expired!',
                                         `${responseJson.message.message}.Redirecting to login screen`,
@@ -455,7 +464,10 @@ class ViewTimesheetForm extends Component {
                                 });
                             }
                             else {
-                                this.setState({ isLoading: false }, () => {
+                                this.setState({
+                                    isLoading: false,
+                                    visible: false
+                                }, () => {
                                     Alert.alert(
                                         '',
                                         `${responseJson.message.message}`,
@@ -688,7 +700,7 @@ class ViewTimesheetForm extends Component {
                                 </CardItem>
                             </Card>
 
-                            {((this.state.userType === 'SUPERVISOR' || this.state.userType === 'APPROVER') && this.props.timesheetStatus === 5) ?
+                            {(this.state.commentsArray.length > 0) ?
                                 <Card>
                                     <CardItem header bordered>
                                         <Text

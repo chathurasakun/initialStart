@@ -75,6 +75,7 @@ export class App extends Component {
                 drawerPosition='left'
                 drawerImage={Image.menu2}
                 drawerOpenRoute='DrawerOpen'
+                drawerCloseRoute='DrawerClose'
               >
                 {/* <Scene key='main'
                   swipeEnabled={false}
